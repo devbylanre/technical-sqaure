@@ -3,19 +3,52 @@ import './styles/App.css';
 
 // pages
 import Home from './pages/Index';
-import Dashboard from './layouts/Dashboard.tsx';
+import Profile from './pages/Profile/Profile';
+
+// layouts
+import Dashboard from './layouts/dashboard/Dashboard';
+import ProfileLayout from './layouts/profile/ProfileLayout';
+import RootLayout from './layouts/RootLayout';
+import SignUp from './pages/SignUp';
 
 // app routes
 const routes = createBrowserRouter([
   {
     path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        path: 'signup',
+        element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: '/app/',
     element: <Dashboard />,
     children: [
       {
         index: true,
         element: <Home />,
       },
+      {
+        path: 'courses',
+        element: <Home />,
+      },
+      {
+        path: 'docs',
+        element: <Home />,
+      },
+      {
+        path: 'square',
+        element: <Home />,
+      },
     ],
+  },
+  {
+    path: '/app/profile',
+    element: <ProfileLayout />,
+    children: [{ index: true, element: <Profile /> }],
   },
 ]);
 
