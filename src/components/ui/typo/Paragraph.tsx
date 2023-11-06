@@ -4,12 +4,18 @@ import { twMerge } from 'tailwind-merge';
 interface ParagraphProps {
   className?: string;
   children: React.ReactNode;
+  clickEvent?: (e: any) => any;
 }
 
 const Paragraph = (props: ParagraphProps) => {
-  const { className, children } = props;
+  const { className, children, clickEvent } = props;
   return (
-    <p className={twMerge('text-base text-zinc-900', className)}>{children}</p>
+    <p
+      className={twMerge('text-base text-zinc-900', className)}
+      onClick={clickEvent}
+    >
+      {children}
+    </p>
   );
 };
 
