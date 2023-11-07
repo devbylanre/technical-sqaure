@@ -8,6 +8,7 @@ const Container = () => {
     firstName: '',
     lastName: '',
     role: '',
+    interest: '',
   };
 
   //   form validation schema
@@ -15,6 +16,7 @@ const Container = () => {
     firstName: Yup.string().required('This field is required'),
     lastName: Yup.string().required('This field is required'),
     role: Yup.string().required('This field is required'),
+    interest: Yup.string().required('This field is required'),
   });
 
   return (

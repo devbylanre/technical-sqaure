@@ -1,4 +1,3 @@
-import Heading from '../components/ui/typo/Heading';
 import Container from '../features/registration/Container';
 
 const SignUp = () => {

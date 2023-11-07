@@ -1,11 +1,20 @@
+import ButtonGroup from '../../../components/forms/ButtonGroup';
 import FieldControl from '../../../components/forms/FieldControl';
-import Select from '../../../components/forms/Select';
 import Paragraph from '../../../components/ui/typo/Paragraph';
 
 const roleOptions = [
   { title: 'manager', value: 'manager' },
   { title: 'HR manager', value: 'HR manager' },
   { title: 'Co-founder', value: 'Co-founder' },
+];
+
+const interests = [
+  { title: 'sport', value: 'sport' },
+  { title: 'yoga', value: 'yoga' },
+  { title: 'fitness', value: 'fitness' },
+  { title: 'politics', value: 'politics' },
+  { title: 'programming', value: 'programming' },
+  { title: 'artificial intelligence', value: 'artificial intelligence' },
 ];
 
 const Start = () => {
@@ -18,7 +27,6 @@ const Start = () => {
         children={
           <Paragraph className='pl-2 text-zinc-600'>square.com/</Paragraph>
         }
-        disabled
       />
       <FieldControl
         control='input'
@@ -26,10 +34,18 @@ const Start = () => {
         name='lastName'
         label='Last name'
       />
-      <Select
+      <FieldControl
+        control='select'
         name='role'
+        label='What is your role?'
         placeholder='Select your role'
         options={roleOptions}
+      />
+      <ButtonGroup
+        name='interest'
+        label='Select your interest'
+        options={interests}
+        multiple
       />
     </div>
   );

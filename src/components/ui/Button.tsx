@@ -3,12 +3,13 @@ import { twMerge } from 'tailwind-merge';
 interface ButtonProps {
   className?: string;
   children: React.ReactNode;
+  type?: 'button' | 'reset' | 'submit';
   clickEvent?: (e: any) => any;
   mouseOverEvent?: (e: any) => any;
 }
 
 const Button = (props: ButtonProps) => {
-  const { className, children, clickEvent, mouseOverEvent } = props;
+  const { className, type, children, clickEvent, mouseOverEvent } = props;
 
   return (
     <button
@@ -16,6 +17,7 @@ const Button = (props: ButtonProps) => {
         'inline-flex gap-x-1.5 items-center justify-center font-medium transition-all duration-300 ease-in-out',
         className
       )}
+      type={type}
       onClick={clickEvent}
       onMouseOver={mouseOverEvent}
     >

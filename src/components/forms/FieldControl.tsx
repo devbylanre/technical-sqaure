@@ -1,19 +1,29 @@
-import Input, { InputProps } from './Input';
+import Input, { InputProps } from './input/Input';
+import Select, { SelectProps, Options } from './select/Select';
 
-interface FieldInputProps extends InputProps {
+interface FieldInputProps extends InputProps, SelectProps {
   name: string;
-  control: string;
+  control: 'input' | 'select';
+  options?: Options[];
 }
 
 // export default Field;
 const FieldControl = (props: FieldInputProps) => {
-  const { control, name, ...rest } = props;
+  const { control, name, options, ...rest } = props;
 
   switch (control) {
     case 'input':
       return (
         <Input
           name={name}
+          {...rest}
+        />
+      );
+    case 'select':
+      return (
+        <Select
+          name={name}
+          options={options || []}
           {...rest}
         />
       );

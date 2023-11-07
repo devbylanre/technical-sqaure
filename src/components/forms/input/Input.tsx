@@ -1,6 +1,8 @@
 import { Field, useField } from 'formik';
-import Paragraph from '../ui/typo/Paragraph';
+import Paragraph from '../../ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
+import Label from '../Label';
+import ErrorMessage from '../ErrorMessage';
 
 export interface InputProps extends Partial<HTMLInputElement> {
   name: string;
@@ -16,14 +18,10 @@ const Input = (props: InputProps) => {
   return (
     <div className='flex flex-col gap-y-1.5'>
       {/* field label */}
-      {label ? (
-        <label
-          htmlFor={name}
-          className='font-medium text-zinc-900'
-        >
-          {label}
-        </label>
-      ) : null}
+      <Label
+        name={name}
+        label={label}
+      />
       {/* field */}
       <div
         className={twMerge(
@@ -52,11 +50,10 @@ const Input = (props: InputProps) => {
       </div>
 
       {/* field error */}
-      {meta.touched && meta.error ? (
-        <Paragraph className='text-red-600 first-letter:uppercase'>
-          {meta.error}
-        </Paragraph>
-      ) : null}
+      <ErrorMessage
+        touched={meta.touched}
+        error={meta.error}
+      />
     </div>
   );
 };
