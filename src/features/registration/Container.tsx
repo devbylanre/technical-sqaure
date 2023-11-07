@@ -17,6 +17,7 @@ const Container = () => {
     lastName: Yup.string().required('This field is required'),
     role: Yup.string().required('This field is required'),
     interest: Yup.string().required('This field is required'),
+    textarea: Yup.string().required('This field is required'),
   });
 
   return (

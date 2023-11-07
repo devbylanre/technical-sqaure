@@ -1,5 +1,6 @@
 import ButtonGroup from '../../../components/forms/ButtonGroup';
 import FieldControl from '../../../components/forms/FieldControl';
+import Textarea from '../../../components/forms/textarea/Textarea';
 import Paragraph from '../../../components/ui/typo/Paragraph';
 
 const roleOptions = [
@@ -46,6 +47,10 @@ const Start = () => {
         label='Select your interest'
         options={interests}
         multiple
+      />
+      <Textarea
+        name='textarea'
+        label='Textarea'
       />
     </div>
   );

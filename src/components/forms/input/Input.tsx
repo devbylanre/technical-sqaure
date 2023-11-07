@@ -1,5 +1,4 @@
 import { Field, useField } from 'formik';
-import Paragraph from '../../ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
 import Label from '../Label';
 import ErrorMessage from '../ErrorMessage';
