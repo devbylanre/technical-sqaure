@@ -1,7 +1,7 @@
-import { Field, useField } from 'formik';
-import { twMerge } from 'tailwind-merge';
+import { useField } from 'formik';
 import Label from '../Label';
-import ErrorMessage from '../ErrorMessage';
+import Helper from '../Helper';
+import InputField from './InputField';
 
 export interface InputProps extends Partial<HTMLInputElement> {
   name: string;
@@ -22,34 +22,18 @@ const Input = (props: InputProps) => {
         label={label}
       />
       {/* field */}
-      <div
-        className={twMerge(
-          'inline-flex ring-1 ring-zinc-300 items-center outline-none rounded-lg bg-white transition-all duration-300 ease-in-out',
-          disabled && 'bg-zinc-50 opacity-70 cursor-not-allowed',
-          meta.touched && !meta.error
-            ? 'ring-zinc-900'
-            : meta.touched && meta.error && 'ring-red-600'
-        )}
-      >
-        {/* child */}
-        {children ? children : null}
-        {/* the field */}
-        <Field
-          name={name}
-          className={twMerge(
-            'flex-1 py-1.5 px-2 bg-transparent outline-none',
-            disabled && 'cursor-not-allowed'
-          )}
-          {...rest}
-          onFocus={() => helper.setTouched(true)}
-          onBlur={() => helper.setTouched(false)}
-          autoComplete={field.name}
-          disabled={disabled}
-        />
-      </div>
-
-      {/* field error */}
-      <ErrorMessage
+      <InputField
+        name={name}
+        onFocus={() => helper.setTouched(true)}
+        onBlur={() => helper.setTouched(false)}
+        disabled={disabled}
+        error={meta.error}
+        touched={meta.touched}
+        children={children}
+        {...rest}
+      />
+      {/* field helper / error */}
+      <Helper
         touched={meta.touched}
         error={meta.error}
       />

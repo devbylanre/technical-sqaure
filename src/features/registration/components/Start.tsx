@@ -51,6 +51,8 @@ const Start = () => {
       <Textarea
         name='textarea'
         label='Textarea'
+        limit={100}
+        helperText='hey'
       />
     </div>
   );

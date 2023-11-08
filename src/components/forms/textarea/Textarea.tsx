@@ -1,17 +1,19 @@
 import { Field, useField } from 'formik';
-import ErrorMessage from '../ErrorMessage';
+import Helper from '../Helper';
 import Label from '../Label';
 import { twMerge } from 'tailwind-merge';
 import { useEffect } from 'react';
+import Paragraph from '../../ui/typo/Paragraph';
 
 interface TextareaProps {
   name: string;
   label: string;
-  length?: number;
+  limit?: number;
+  helperText?: string;
 }
 
 const Textarea = (props: TextareaProps) => {
-  const { name, label } = props;
+  const { name, label, limit, helperText } = props;
   const [field, meta, helper] = useField(name);
 
   const element = document.querySelector(`#${name}`) as HTMLTextAreaElement;
@@ -22,8 +24,13 @@ const Textarea = (props: TextareaProps) => {
       if (element.value.length > 1) {
         element.style.height = `${element.scrollHeight}px`;
       }
+
+      if (limit && limit <= element.value.length) {
+        const value = element.value.slice(0, limit);
+        helper.setValue(value);
+      }
     }
-  }, [element, element?.value]);
+  }, [element, element?.value, limit]);
 
   return (
     <div className='flex flex-col gap-y-1.5'>
@@ -33,26 +40,38 @@ const Textarea = (props: TextareaProps) => {
         label={label}
       />
 
-      {/* textarea field */}
-      <Field
-        as='textarea'
-        name={name}
-        id={name}
-        rows={1}
+      <div
         className={twMerge(
-          'rounded-lg outline-none resize-none ring-1 h-fit ring-zinc-300 py-1.5 px-2 transition-all duration-300 ease-in-out',
+          'rounded-lg ring-1 flex flex-col ring-zinc-300 transition-all duration-300 ease-in-out',
           meta.touched && !meta.error
             ? 'ring-zinc-900'
             : meta.error && meta.touched && 'ring-red-600'
         )}
-        onFocus={() => helper.setTouched(true)}
-        onBlur={() => helper.setTouched(false)}
-      />
+      >
+        {/* textarea field */}
+        <Field
+          as='textarea'
+          name={name}
+          id={name}
+          rows={1}
+          className='w-full h-full leading-tight bg-transparent outline-none resize-none py-1.5 px-2'
+          onFocus={() => helper.setTouched(true)}
+          onBlur={() => helper.setTouched(false)}
+        />
+        <Paragraph className='self-end py-0.5 px-1.5 text-xs font-medium'>
+          {limit && field.value
+            ? limit > field.value.length
+              ? field.value.length + '/' + limit
+              : field.value.length >= limit && 'Limit reached'
+            : null}
+        </Paragraph>
+      </div>
 
       {/* error message */}
-      <ErrorMessage
+      <Helper
         touched={meta.touched}
         error={meta.error}
+        helper={helperText}
       />
     </div>
   );

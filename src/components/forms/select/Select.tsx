@@ -1,10 +1,7 @@
 import { useField } from 'formik';
-import { RiArrowDownSLine } from 'react-icons/ri';
-import { twMerge } from 'tailwind-merge';
-import { motion } from 'framer-motion';
 import Label from '../Label';
 import Dropdown from './Dropdown';
-import SelectedValue from './SelectedValue';
+import SelectField from './SelectField';
 
 export interface Options {
   title: string;
@@ -69,28 +66,14 @@ const Select = (props: SelectProps) => {
         label={label}
       />
       {/* field block */}
-      <div
-        className={twMerge(
-          'p-1.5 rounded-lg bg-white ring-1 ring-zinc-300 inline-flex items-center justify-between transition-all duration-300 ease-in-out cursor-pointer',
-          meta.touched && !meta.error
-            ? 'ring-zinc-900'
-            : meta.touched && 'ring-red-600'
-        )}
-        onClick={() => helper.setTouched(!meta.touched)}
-      >
-        {/* selected field value */}
-        <SelectedValue
-          value={field.value}
-          removeOption={removeOption}
-          placeholder={placeholder}
-          error={meta.error}
-          touched={meta.touched}
-        />
-        {/* animated icon */}
-        <motion.span animate={meta.touched ? { rotate: -180 } : { rotate: 0 }}>
-          <RiArrowDownSLine className='w-5 h-5 fill-zinc-500' />
-        </motion.span>
-      </div>
+      <SelectField
+        touched={meta.touched}
+        value={field.value}
+        removeOption={removeOption}
+        placeholder={placeholder}
+        error={meta.error}
+        setTouched={() => helper.setTouched(!meta.touched)}
+      />
 
       {/* options */}
       <Dropdown
