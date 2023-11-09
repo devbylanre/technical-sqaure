@@ -4,26 +4,26 @@ import Helper from '../Helper';
 import InputField from './InputField';
 
 export interface InputProps extends Partial<HTMLInputElement> {
-  name: string;
-  label?: string;
-  children?: any;
-  disabled?: boolean;
+  name: string; // The name of the input field
+  label?: string; // Optional label of the input field
+  children?: any; // Optional children of the input field
+  disabled?: boolean; // Optional check if the input field is disabled
 }
 
 const Input = (props: InputProps) => {
   const { name, label, disabled, children, ...rest } = props;
-  const [field, meta, helper] = useField(name);
+  const [field, meta, helper] = useField(name); // formik useField hook
 
   return (
     <div className='flex flex-col gap-y-1.5'>
-      {/* field label */}
+      {/* Render the label component */}
       <Label
         name={name}
         label={label}
       />
-      {/* field */}
+      {/* Render the input field component */}
       <InputField
-        name={name}
+        name={field.name}
         onFocus={() => helper.setTouched(true)}
         onBlur={() => helper.setTouched(false)}
         disabled={disabled}
@@ -32,7 +32,7 @@ const Input = (props: InputProps) => {
         children={children}
         {...rest}
       />
-      {/* field helper / error */}
+      {/* render the field helper component*/}
       <Helper
         touched={meta.touched}
         error={meta.error}

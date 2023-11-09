@@ -3,13 +3,13 @@ import Button from '../../ui/Button';
 import Paragraph from '../../ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
 
-interface SelectedValueProps {
+type SelectedValueProps = {
   value: any;
   removeOption: (e: string | number) => any;
   placeholder?: string;
   error: any;
   touched: boolean;
-}
+};
 
 const SelectedValue = (props: SelectedValueProps) => {
   const { value, touched, removeOption, placeholder, error } = props;
@@ -22,19 +22,21 @@ const SelectedValue = (props: SelectedValueProps) => {
             <Button
               key={i}
               type='button'
-              className='gap-x-0.5 ring-1 ring-zinc-300 px-1 rounded capitalize font-normal'
+              className='gap-x-0.5 ring-1 ring-zinc-300 px-1 rounded capitalize font-normal sm:text-sm leading-tight'
             >
               {val}
               <RiCloseLine onClick={() => removeOption(val)} />
             </Button>
           ))
         ) : (
-          <Paragraph className='capitalize text-zinc-900'>{value}</Paragraph>
+          <Paragraph className='capitalize text-zinc-900 sm:text-sm'>
+            {value}
+          </Paragraph>
         )
       ) : (
         <Paragraph
           className={twMerge(
-            'text-zinc-600',
+            'text-zinc-600 sm:text-sm leading-tight',
             error && touched && 'text-red-600'
           )}
         >

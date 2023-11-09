@@ -5,12 +5,12 @@ import { twMerge } from 'tailwind-merge';
 import { useEffect } from 'react';
 import Paragraph from '../../ui/typo/Paragraph';
 
-interface TextareaProps {
+export type TextareaProps = {
   name: string;
   label: string;
   limit?: number;
   helperText?: string;
-}
+};
 
 const Textarea = (props: TextareaProps) => {
   const { name, label, limit, helperText } = props;
@@ -45,7 +45,7 @@ const Textarea = (props: TextareaProps) => {
           'rounded-lg ring-1 flex flex-col ring-zinc-300 transition-all duration-300 ease-in-out',
           meta.touched && !meta.error
             ? 'ring-zinc-900'
-            : meta.error && meta.touched && 'ring-red-600'
+            : meta.error && meta.touched && 'ring-red-600 text-red-800'
         )}
       >
         {/* textarea field */}
@@ -54,17 +54,19 @@ const Textarea = (props: TextareaProps) => {
           name={name}
           id={name}
           rows={1}
-          className='w-full h-full leading-tight bg-transparent outline-none resize-none py-1.5 px-2'
+          className='w-full h-full leading-tight sm:text-sm bg-transparent outline-none resize-none py-1.5 px-2 text-inherit'
           onFocus={() => helper.setTouched(true)}
           onBlur={() => helper.setTouched(false)}
         />
-        <Paragraph className='self-end py-0.5 px-1.5 text-xs font-medium'>
-          {limit && field.value
-            ? limit > field.value.length
-              ? field.value.length + '/' + limit
-              : field.value.length >= limit && 'Limit reached'
-            : null}
-        </Paragraph>
+        {field.value && (
+          <Paragraph className='self-end py-0.5 px-1.5 text-xs font-medium'>
+            {limit && field.value
+              ? limit > field.value.length
+                ? field.value.length + '/' + limit
+                : field.value.length >= limit && 'Limit reached'
+              : null}
+          </Paragraph>
+        )}
       </div>
 
       {/* error message */}

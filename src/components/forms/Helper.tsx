@@ -10,17 +10,19 @@ interface HelperProps {
 const Helper = (props: HelperProps) => {
   const { touched, error, helper } = props;
 
-  if (!touched && !helper) return null;
-
   return (
-    <Paragraph
-      className={twMerge(
-        'text-zinc-600 first-letter:uppercase leading-tight',
-        error && 'text-red-600'
-      )}
-    >
-      {error ? error : helper}
-    </Paragraph>
+    <>
+      {(touched && error) || helper ? (
+        <Paragraph
+          className={twMerge(
+            'text-zinc-600 first-letter:uppercase sm:text-sm',
+            error && 'text-red-600'
+          )}
+        >
+          {error || helper}
+        </Paragraph>
+      ) : null}
+    </>
   );
 };
 

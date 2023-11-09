@@ -1,4 +1,4 @@
-import ButtonGroup from '../../../components/forms/ButtonGroup';
+import ButtonGroup from '../../../components/forms/button/ButtonGroup';
 import FieldControl from '../../../components/forms/FieldControl';
 import Textarea from '../../../components/forms/textarea/Textarea';
 import Paragraph from '../../../components/ui/typo/Paragraph';
@@ -26,8 +26,11 @@ const Start = () => {
         name='firstName'
         label='First name'
         children={
-          <Paragraph className='pl-2 text-zinc-600'>square.com/</Paragraph>
+          <Paragraph className='pl-1.5 text-zinc-600 sm:text-sm'>
+            square.com/
+          </Paragraph>
         }
+        disabled
       />
       <FieldControl
         control='input'

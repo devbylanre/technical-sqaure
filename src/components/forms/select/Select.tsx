@@ -3,18 +3,18 @@ import Label from '../Label';
 import Dropdown from './Dropdown';
 import SelectField from './SelectField';
 
-export interface Options {
+export type Options = {
   title: string;
   value: string;
-}
+};
 
-export interface SelectProps {
+export type SelectProps = {
   name: string;
   label?: string;
   multiple?: boolean;
-  options?: Options[];
+  options: Options[];
   placeholder?: string;
-}
+};
 
 const Select = (props: SelectProps) => {
   const { name, label, multiple, options, placeholder } = props;

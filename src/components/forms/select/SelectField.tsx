@@ -3,14 +3,14 @@ import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
 import SelectedValue from './SelectedValue';
 
-interface SelectFieldProps {
+type SelectFieldProps = {
   touched: boolean;
   value: any;
   setTouched: (e: any) => void;
   placeholder?: string;
   error: any;
   removeOption: (e: any) => void;
-}
+};
 
 const SelectField = (props: SelectFieldProps) => {
   const { touched, value, placeholder, error, removeOption, setTouched } =

@@ -11,7 +11,7 @@ const Label = (props: LabelProps) => {
   return (
     <label
       htmlFor={name}
-      className='font-medium leading-tight text-zinc-900'
+      className='font-medium leading-tight sm:text-sm text-zinc-900'
     >
       {label}
     </label>
