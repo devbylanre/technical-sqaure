@@ -3,17 +3,17 @@ import Label from '../Label';
 import Dropdown from './Dropdown';
 import SelectField from './SelectField';
 
-export type Options = {
-  title: string;
-  value: string;
+export type Option = {
+  title: string; // the title of the option
+  value: string; // the value type of the option
 };
 
 export type SelectProps = {
-  name: string;
-  label?: string;
-  multiple?: boolean;
-  options: Options[];
-  placeholder?: string;
+  name: string; // the name of the field
+  label?: string; // the label for the field
+  multiple?: boolean; //optional check if multiple options are allowed
+  options: Option[]; // array of option
+  placeholder?: string; // the placeholder for the field
 };
 
 const Select = (props: SelectProps) => {
@@ -51,7 +51,6 @@ const Select = (props: SelectProps) => {
   // check if value exists in field
   const valueExists = (value: string | number) => {
     const values = field.value;
-
     if (multiple) {
       return Array.isArray(values) && values.includes(value);
     }
@@ -60,12 +59,12 @@ const Select = (props: SelectProps) => {
 
   return (
     <div className='relative flex flex-col gap-y-1.5'>
-      {/* label block */}
+      {/* render label component */}
       <Label
         name={name}
         label={label}
       />
-      {/* field block */}
+      {/* render select field component*/}
       <SelectField
         touched={meta.touched}
         value={field.value}
@@ -75,7 +74,7 @@ const Select = (props: SelectProps) => {
         setTouched={() => helper.setTouched(!meta.touched)}
       />
 
-      {/* options */}
+      {/* render dropdown field component */}
       <Dropdown
         touched={meta.touched}
         options={options}

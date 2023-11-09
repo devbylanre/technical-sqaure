@@ -4,17 +4,18 @@ import { motion } from 'framer-motion';
 import SelectedValue from './SelectedValue';
 
 type SelectFieldProps = {
-  touched: boolean;
-  value: any;
-  setTouched: (e: any) => void;
-  placeholder?: string;
-  error: any;
-  removeOption: (e: any) => void;
+  touched: boolean; //a boolean flag to indicate whether the field is touched
+  value: any; // the field value
+  setTouched: (e: any) => void; // function for setting whether the field is touched or not
+  placeholder?: string; // an optional placeholder text
+  error: any; // field error message
+  removeOption: (e: any) => void; // function for removing option
 };
 
 const SelectField = (props: SelectFieldProps) => {
   const { touched, value, placeholder, error, removeOption, setTouched } =
     props;
+
   return (
     <div
       className={twMerge(
@@ -23,7 +24,7 @@ const SelectField = (props: SelectFieldProps) => {
       )}
       onClick={setTouched}
     >
-      {/* selected field value */}
+      {/* render selected field value */}
       <SelectedValue
         value={value}
         removeOption={removeOption}
@@ -31,8 +32,9 @@ const SelectField = (props: SelectFieldProps) => {
         error={error}
         touched={touched}
       />
-      {/* animated icon */}
+      {/* render animated icon */}
       <motion.span animate={touched ? { rotate: -180 } : { rotate: 0 }}>
+        {/* icon indicating the field is a dropdown */}
         <RiArrowDownSLine className='w-5 h-5 fill-zinc-500' />
       </motion.span>
     </div>

@@ -1,15 +1,14 @@
-import { Field, useField } from 'formik';
+import { useField } from 'formik';
 import Helper from '../Helper';
 import Label from '../Label';
-import { twMerge } from 'tailwind-merge';
 import { useEffect } from 'react';
-import Paragraph from '../../ui/typo/Paragraph';
+import TextareaField from './TextareaField';
 
 export type TextareaProps = {
-  name: string;
-  label: string;
-  limit?: number;
-  helperText?: string;
+  name: string; // field name
+  label: string; // field label
+  limit?: number; // optional number of character limit
+  helperText?: string; // optional helper text
 };
 
 const Textarea = (props: TextareaProps) => {
@@ -19,55 +18,40 @@ const Textarea = (props: TextareaProps) => {
   const element = document.querySelector(`#${name}`) as HTMLTextAreaElement;
 
   useEffect(() => {
+    // check if the element exists
     if (element) {
-      element.style.height = 'fit-content';
-      if (element.value.length > 1) {
+      element.style.height = 'fit-content'; // height of the element by default
+
+      // check if the element value length is greater than zero '0'
+      if (element.value.length > 0) {
         element.style.height = `${element.scrollHeight}px`;
       }
 
+      // check if limit exists and limit is greater than element value length
       if (limit && limit <= element.value.length) {
-        const value = element.value.slice(0, limit);
-        helper.setValue(value);
+        const newValue = element.value.slice(0, limit); // slice the field value starting from 0
+        helper.setValue(newValue);
       }
     }
-  }, [element, element?.value, limit]);
+  }, [element, element?.value, limit, helper]);
 
   return (
     <div className='flex flex-col gap-y-1.5'>
-      {/* field label */}
+      {/* render field label */}
       <Label
         name={name}
         label={label}
       />
 
-      <div
-        className={twMerge(
-          'rounded-lg ring-1 flex flex-col ring-zinc-300 transition-all duration-300 ease-in-out',
-          meta.touched && !meta.error
-            ? 'ring-zinc-900'
-            : meta.error && meta.touched && 'ring-red-600 text-red-800'
-        )}
-      >
-        {/* textarea field */}
-        <Field
-          as='textarea'
-          name={name}
-          id={name}
-          rows={1}
-          className='w-full h-full leading-tight sm:text-sm bg-transparent outline-none resize-none py-1.5 px-2 text-inherit'
-          onFocus={() => helper.setTouched(true)}
-          onBlur={() => helper.setTouched(false)}
-        />
-        {field.value && (
-          <Paragraph className='self-end py-0.5 px-1.5 text-xs font-medium'>
-            {limit && field.value
-              ? limit > field.value.length
-                ? field.value.length + '/' + limit
-                : field.value.length >= limit && 'Limit reached'
-              : null}
-          </Paragraph>
-        )}
-      </div>
+      {/* render textarea field */}
+      <TextareaField
+        name={name}
+        value={field.value}
+        touched={meta.touched}
+        error={meta.error}
+        limit={limit}
+        setTouched={helper.setTouched}
+      />
 
       {/* error message */}
       <Helper
