@@ -1,6 +1,5 @@
-import ButtonGroup from '../../../components/forms/button/ButtonGroup';
 import FieldControl from '../../../components/forms/FieldControl';
-import Textarea from '../../../components/forms/textarea/Textarea';
+import Amount from '../../../components/forms/amount/Amount';
 import Paragraph from '../../../components/ui/typo/Paragraph';
 
 const roleOptions = [
@@ -25,6 +24,7 @@ const Start = () => {
         control='input'
         name='firstName'
         label='First name'
+        placeholder='Enter your first name'
         children={
           <Paragraph className='pl-1.5 text-zinc-600 sm:text-sm'>
             square.com/
@@ -34,7 +34,6 @@ const Start = () => {
       />
       <FieldControl
         control='input'
-        type='number'
         name='lastName'
         label='Last name'
       />
@@ -45,17 +44,26 @@ const Start = () => {
         placeholder='Select your role'
         options={roleOptions}
       />
-      <ButtonGroup
+      <FieldControl
+        control='btn'
         name='interest'
         label='Select your interest'
         options={interests}
         multiple
       />
-      <Textarea
+      <FieldControl
+        control='textarea'
         name='textarea'
         label='Textarea'
         limit={100}
         helperText='hey'
+      />
+      <Amount
+        name='amount'
+        label='Select the amount'
+        prefix='$'
+        min={0}
+        max={1500}
       />
     </div>
   );

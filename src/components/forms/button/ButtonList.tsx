@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 import Button from '../../ui/Button';
-import { OptionProps } from './ButtonGroup';
+import { OptionProps } from './Button';
 
 type ButtonListProps = {
   options: OptionProps[]; //List of all available options

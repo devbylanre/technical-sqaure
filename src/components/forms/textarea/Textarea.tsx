@@ -1,15 +1,15 @@
 import { useField } from 'formik';
 import Helper from '../Helper';
 import Label from '../Label';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TextareaField from './TextareaField';
 
-export type TextareaProps = {
+export interface TextareaProps extends Partial<HTMLTextAreaElement> {
   name: string; // field name
   label: string; // field label
   limit?: number; // optional number of character limit
   helperText?: string; // optional helper text
-};
+}
 
 const Textarea = (props: TextareaProps) => {
   const { name, label, limit, helperText } = props;

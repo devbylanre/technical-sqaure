@@ -10,7 +10,7 @@ export type OptionProps = {
 };
 
 // Define the properties for the button group
-export type ButtonGroupProps = {
+export type ButtonProps = {
   name: string; // Unique name identifier for the button group field
   label?: string; // Optional label for the button group
   multiple?: boolean; // Indicates if multiple options can be selected
@@ -18,7 +18,7 @@ export type ButtonGroupProps = {
   helperText?: string; // Additional helper text for the button group
 };
 
-const ButtonGroup = (props: ButtonGroupProps) => {
+const Button = (props: ButtonProps) => {
   const { name, label, multiple, options, helperText } = props;
   const [field, meta, helper] = useField(name);
 
@@ -76,4 +76,4 @@ const ButtonGroup = (props: ButtonGroupProps) => {
   );
 };
 
-export default ButtonGroup;
+export default Button;

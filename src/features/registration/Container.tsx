@@ -9,6 +9,7 @@ const Container = () => {
     lastName: '',
     role: '',
     interest: '',
+    amount: 0,
   };
 
   //   form validation schema

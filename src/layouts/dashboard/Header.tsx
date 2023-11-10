@@ -12,8 +12,8 @@ const Header = () => {
     <div className='inline-flex items-center justify-between w-full px-3 py-2 bg-white border-b md:px-5 border-b-zinc-200'>
       <div className='inline-flex items-center gap-x-1.5'>
         <img
-          className='object-cover w-8 bg-white rounded-full md:w-9 ring-1 ring-zinc-200'
-          src='./assets/images/user.png'
+          className='object-cover w-8 bg-red-100 rounded-full md:w-9 ring-1 ring-zinc-100'
+          src='/assets/images/user.png'
           alt='user'
         />
         <Heading className='text-base md:text-lg'>Andrew Tate</Heading>
