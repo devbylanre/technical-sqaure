@@ -26,7 +26,7 @@ const Dropdown = (props: DropdownProps) => {
               key={option.title}
               onClick={() => setValue(option.value)}
               className={twMerge(
-                'px-1.5 py-1 hover:bg-zinc-100 rounded cursor-pointer first-letter:uppercase sm:text-sm',
+                'px-1.5 py-1 hover:bg-zinc-100 rounded cursor-pointer first-letter:uppercase',
                 valueExists(option.value) && 'font-medium'
               )}
             >

@@ -19,7 +19,7 @@ const SelectField = (props: SelectFieldProps) => {
   return (
     <div
       className={twMerge(
-        'p-1.5 rounded-lg bg-white ring-1 ring-zinc-300 inline-flex items-center justify-between transition-all duration-300 ease-in-out cursor-pointer',
+        'p-2 rounded-lg bg-white ring-1 ring-zinc-300 inline-flex items-center justify-between transition-all duration-300 ease-in-out cursor-pointer',
         touched && !error ? 'ring-zinc-900' : touched && 'ring-red-600'
       )}
       onClick={setTouched}

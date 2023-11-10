@@ -25,10 +25,8 @@ const Start = () => {
         name='firstName'
         label='First name'
         placeholder='Enter your first name'
-        children={
-          <Paragraph className='pl-1.5 text-zinc-600 sm:text-sm'>
-            square.com/
-          </Paragraph>
+        prefix={
+          <Paragraph className='pl-1.5 text-zinc-600'>square.com/</Paragraph>
         }
         disabled
       />

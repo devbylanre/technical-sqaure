@@ -6,12 +6,12 @@ import InputField from './InputField';
 export interface InputProps extends Partial<HTMLInputElement> {
   name: string; // The name of the input field
   label?: string; // Optional label of the input field
-  children?: any; // Optional children of the input field
+  prefix?: any; // Optional prefix of the input field
   disabled?: boolean; // Optional check if the input field is disabled
 }
 
 const Input = (props: InputProps) => {
-  const { name, label, disabled, children, ...rest } = props;
+  const { name, label, disabled, prefix, ...rest } = props;
   const [field, meta, helper] = useField(name); // formik useField hook
 
   return (
@@ -29,7 +29,7 @@ const Input = (props: InputProps) => {
         disabled={disabled}
         error={meta.error}
         touched={meta.touched}
-        children={children}
+        prefix={prefix}
         {...rest}
       />
       {/* render the field helper component*/}

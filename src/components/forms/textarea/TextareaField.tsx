@@ -29,7 +29,7 @@ const TextareaField = (props: TextareaFieldProps) => {
         name={name}
         id={name}
         rows={1}
-        className='w-full h-full leading-tight sm:text-sm bg-transparent outline-none resize-none py-1.5 px-2 text-inherit'
+        className='w-full h-full p-2 leading-tight bg-transparent outline-none resize-none text-inherit'
         onFocus={() => setTouched(true)}
         onBlur={() => setTouched(false)}
       />
