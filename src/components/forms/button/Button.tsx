@@ -1,25 +1,25 @@
 import { useField } from 'formik';
-import Helper from '../Helper';
+import Helper from '../Message';
 import Label from '../Label';
 import ButtonList from './ButtonList';
 
 // Define the properties for each option within the button group
 export type OptionProps = {
-  title: string; // Title displayed for the option
-  value: string | number; // Value associated with the option
+  title: string;
+  value: string | number;
 };
 
 // Define the properties for the button group
 export type ButtonProps = {
-  name: string; // Unique name identifier for the button group field
-  label?: string; // Optional label for the button group
-  multiple?: boolean; // Indicates if multiple options can be selected
-  options: OptionProps[]; // List of available options
-  helperText?: string; // Additional helper text for the button group
+  name: string;
+  label?: string;
+  multiple?: boolean;
+  options: OptionProps[];
+  message?: string;
 };
 
 const Button = (props: ButtonProps) => {
-  const { name, label, multiple, options, helperText } = props;
+  const { name, label, multiple, options, message } = props;
   const [field, meta, helper] = useField(name);
 
   // Set the value of the button group based on selection
@@ -70,7 +70,7 @@ const Button = (props: ButtonProps) => {
       <Helper
         touched={meta.touched}
         error={meta.error}
-        helper={helperText}
+        message={message}
       />
     </div>
   );

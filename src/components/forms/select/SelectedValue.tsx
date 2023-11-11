@@ -15,7 +15,7 @@ const SelectedValue = (props: SelectedValueProps) => {
   const { value, touched, removeOption, placeholder, error } = props;
 
   return (
-    <div className='inline-flex gap-x-1.5'>
+    <div className='inline-flex p-1 gap-x-1.5'>
       {/* check if value exists and has a length greater than 0 */}
       {value && value.length > 0 ? (
         Array.isArray(value) ? ( // check if value is an array
@@ -23,22 +23,27 @@ const SelectedValue = (props: SelectedValueProps) => {
             <Button
               key={i}
               type='button'
-              className='gap-x-0.5 ring-1 ring-zinc-300 px-1 rounded capitalize font-normal leading-tight'
+              className='p-1.5 px-1 sm:text-sm font-medium capitalize rounded gap-x-1 bg-zinc-100 ring-1 ring-zinc-200'
             >
               {val} {/* displays the value */}
-              <RiCloseLine onClick={() => removeOption(val)} />
+              <RiCloseLine
+                className='w-4 h-4 fill-zinc-500 hover:fill-red-700 hover:bg-red-100 hover:rounded-full'
+                onClick={() => removeOption(val)}
+              />
               {/* display icon for removing the option */}
             </Button>
           ))
         ) : (
           //displays a paragraph with the value
-          <Paragraph className='capitalize text-zinc-900'>{value}</Paragraph>
+          <Paragraph className='p-1 font-medium capitalize sm:text-sm text-zinc-900'>
+            {value}
+          </Paragraph>
         )
       ) : (
         // displays a paragraph with the error message or placeholder text
         <Paragraph
           className={twMerge(
-            'text-zinc-600 leading-tight',
+            'text-zinc-600 leading-tight p-1 sm:text-sm',
             error && touched && 'text-red-600'
           )}
         >

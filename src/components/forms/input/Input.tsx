@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 import Label from '../Label';
-import Helper from '../Helper';
+import Helper from '../Message';
 import InputField from './InputField';
 
 export interface InputProps extends Partial<HTMLInputElement> {

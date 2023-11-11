@@ -19,7 +19,7 @@ const SelectField = (props: SelectFieldProps) => {
   return (
     <div
       className={twMerge(
-        'p-2 rounded-lg bg-white ring-1 ring-zinc-300 inline-flex items-center justify-between transition-all duration-300 ease-in-out cursor-pointer',
+        'rounded-lg bg-white ring-1 ring-zinc-300 inline-flex items-center justify-between transition-all duration-300 ease-in-out cursor-pointer',
         touched && !error ? 'ring-zinc-900' : touched && 'ring-red-600'
       )}
       onClick={setTouched}
@@ -33,7 +33,10 @@ const SelectField = (props: SelectFieldProps) => {
         touched={touched}
       />
       {/* render animated icon */}
-      <motion.span animate={touched ? { rotate: -180 } : { rotate: 0 }}>
+      <motion.span
+        className='mr-2'
+        animate={touched ? { rotate: -180 } : { rotate: 0 }}
+      >
         {/* icon indicating the field is a dropdown */}
         <RiArrowDownSLine className='w-5 h-5 fill-zinc-500' />
       </motion.span>

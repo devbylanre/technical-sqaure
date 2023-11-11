@@ -1,18 +1,18 @@
 import { useField } from 'formik';
-import Helper from '../Helper';
+import Helper from '../Message';
 import Label from '../Label';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import TextareaField from './TextareaField';
 
 export interface TextareaProps extends Partial<HTMLTextAreaElement> {
-  name: string; // field name
-  label: string; // field label
-  limit?: number; // optional number of character limit
-  helperText?: string; // optional helper text
+  name: string;
+  label: string;
+  limit?: number;
+  message?: string;
 }
 
 const Textarea = (props: TextareaProps) => {
-  const { name, label, limit, helperText } = props;
+  const { name, label, limit, message } = props;
   const [field, meta, helper] = useField(name);
 
   const element = document.querySelector(`#${name}`) as HTMLTextAreaElement;
@@ -57,7 +57,7 @@ const Textarea = (props: TextareaProps) => {
       <Helper
         touched={meta.touched}
         error={meta.error}
-        helper={helperText}
+        message={message}
       />
     </div>
   );

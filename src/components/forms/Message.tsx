@@ -1,13 +1,13 @@
 import Paragraph from '../ui/typo/Paragraph';
 
-interface HelperProps {
+interface MessageProps {
   touched: boolean;
   error: any;
-  helper?: string;
+  message?: string;
 }
 
-const Helper = (props: HelperProps) => {
-  const { touched, error, helper } = props;
+const Message = (props: MessageProps) => {
+  const { touched, error, message } = props;
 
   return (
     <>
@@ -15,13 +15,13 @@ const Helper = (props: HelperProps) => {
         <Paragraph className='text-red-600 first-letter:uppercase sm:text-sm'>
           {error}
         </Paragraph>
-      ) : helper ? (
+      ) : message ? (
         <Paragraph className='text-sm first-letter:uppercase text-zinc-600'>
-          {helper}
+          {message}
         </Paragraph>
       ) : null}
     </>
   );
 };
 
-export default Helper;
+export default Message;

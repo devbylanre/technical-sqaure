@@ -10,6 +10,8 @@ const Container = () => {
     role: '',
     interest: '',
     amount: 0,
+    notify: false,
+    comment: false,
   };
 
   //   form validation schema

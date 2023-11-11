@@ -3,12 +3,12 @@ import { twMerge } from 'tailwind-merge';
 import Paragraph from '../../ui/typo/Paragraph';
 
 type TextareaFieldProps = {
-  name: string; //field name
-  touched: boolean; // boolean flag for indicating whether the field is touched or not
-  error: any; // error message
-  value: any; //field value
-  limit?: number; // maximum number of characters allowed in the field
-  setTouched: (e: boolean) => void; // boolean flag for indicating specifying whether the field is touched or not
+  name: string;
+  touched: boolean;
+  error: any;
+  value: any;
+  limit?: number;
+  setTouched: (e: boolean) => void;
 };
 
 const TextareaField = (props: TextareaFieldProps) => {
@@ -29,7 +29,7 @@ const TextareaField = (props: TextareaFieldProps) => {
         name={name}
         id={name}
         rows={1}
-        className='w-full h-full p-2 leading-tight bg-transparent outline-none resize-none text-inherit'
+        className='w-full h-full p-2 text-sm font-medium bg-transparent outline-none resize-none sm:text-sm'
         onFocus={() => setTouched(true)}
         onBlur={() => setTouched(false)}
       />
