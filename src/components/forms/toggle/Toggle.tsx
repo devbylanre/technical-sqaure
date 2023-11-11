@@ -2,15 +2,17 @@ import { useField } from 'formik';
 import { motion } from 'framer-motion';
 import Label from '../Label';
 import { twMerge } from 'tailwind-merge';
-import Helper from '../Message';
+import Message from '../Message';
 
-type ToggleProps = {
-  name: string; // name of the field
-  label?: string; //optional label for the field
+// toggle component props type
+export type ToggleProps = {
+  name: string;
+  label?: string;
+  message?: string;
 };
 
 const Toggle = (props: ToggleProps) => {
-  const { name, label } = props;
+  const { name, label, message } = props;
   const [field, meta, helper] = useField(name);
 
   //conditional set the value of field value to it's negative value
@@ -25,9 +27,10 @@ const Toggle = (props: ToggleProps) => {
           label={label}
         />
         {/* render error block */}
-        <Helper
+        <Message
           error={meta.error}
           touched={meta.touched}
+          message={message}
         />
       </div>
 

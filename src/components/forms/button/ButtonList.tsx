@@ -13,6 +13,7 @@ const ButtonList = (props: ButtonListProps) => {
 
   return (
     <div className='flex flex-wrap items-start gap-2'>
+      {/* map through the option */}
       {options &&
         options.map((option) => (
           <Button

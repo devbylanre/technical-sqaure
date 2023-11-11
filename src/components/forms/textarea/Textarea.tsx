@@ -2,6 +2,8 @@ import { useField } from 'formik';
 import Helper from '../Message';
 import Label from '../Label';
 import { useEffect } from 'react';
+import FieldWrapper from '../FieldWrapper';
+import TextareaLimit from './TextareaLimit';
 import TextareaField from './TextareaField';
 
 export interface TextareaProps extends Partial<HTMLTextAreaElement> {
@@ -12,7 +14,7 @@ export interface TextareaProps extends Partial<HTMLTextAreaElement> {
 }
 
 const Textarea = (props: TextareaProps) => {
-  const { name, label, limit, message } = props;
+  const { name, label, limit, message, ...rest } = props;
   const [field, meta, helper] = useField(name);
 
   const element = document.querySelector(`#${name}`) as HTMLTextAreaElement;
@@ -44,14 +46,25 @@ const Textarea = (props: TextareaProps) => {
       />
 
       {/* render textarea field */}
-      <TextareaField
-        name={name}
-        value={field.value}
-        touched={meta.touched}
+      <FieldWrapper
+        className='flex flex-col'
         error={meta.error}
-        limit={limit}
-        setTouched={helper.setTouched}
-      />
+        touched={meta.touched}
+      >
+        {/* textarea field component */}
+        <TextareaField
+          name={field.name}
+          handleFocus={() => helper.setTouched(true)}
+          handleBlur={() => helper.setTouched(false)}
+          {...rest}
+        />
+
+        {/* renders field characters limit */}
+        <TextareaLimit
+          value={field.value}
+          limit={limit}
+        />
+      </FieldWrapper>
 
       {/* error message */}
       <Helper

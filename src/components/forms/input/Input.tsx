@@ -1,17 +1,21 @@
 import { useField } from 'formik';
 import Label from '../Label';
-import Helper from '../Message';
 import InputField from './InputField';
+import Message from '../Message';
+import FieldWrapper from '../FieldWrapper';
 
+// component interface partially extending input element
 export interface InputProps extends Partial<HTMLInputElement> {
-  name: string; // The name of the input field
-  label?: string; // Optional label of the input field
-  prefix?: any; // Optional prefix of the input field
-  disabled?: boolean; // Optional check if the input field is disabled
+  name: string;
+  label?: string;
+  prefix?: any;
+  suffix?: any;
+  disabled?: boolean;
+  message?: string;
 }
 
 const Input = (props: InputProps) => {
-  const { name, label, disabled, prefix, ...rest } = props;
+  const { name, label, message, disabled, prefix, suffix, ...rest } = props;
   const [field, meta, helper] = useField(name); // formik useField hook
 
   return (
@@ -21,21 +25,33 @@ const Input = (props: InputProps) => {
         name={name}
         label={label}
       />
+
       {/* Render the input field component */}
-      <InputField
-        name={field.name}
-        onFocus={() => helper.setTouched(true)}
-        onBlur={() => helper.setTouched(false)}
+      <FieldWrapper
+        className='inline-flex items-center'
+        touched={meta.touched}
+        error={meta.error}
         disabled={disabled}
-        error={meta.error}
-        touched={meta.touched}
-        prefix={prefix}
-        {...rest}
-      />
+      >
+        {/* render the sender conditionally */}
+        {prefix ? prefix : null}
+        {/* renders the field */}
+        <InputField
+          name={field.name}
+          disabled={disabled}
+          onFocus={() => helper.setTouched(true)}
+          onBlur={() => helper.setTouched(false)}
+          {...rest}
+        />
+        {/* render the sender conditionally */}
+        {suffix ? suffix : null}
+      </FieldWrapper>
+
       {/* render the field helper component*/}
-      <Helper
+      <Message
         touched={meta.touched}
         error={meta.error}
+        message={message}
       />
     </div>
   );

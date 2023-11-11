@@ -23,7 +23,7 @@ const SelectedValue = (props: SelectedValueProps) => {
             <Button
               key={i}
               type='button'
-              className='p-1.5 px-1 sm:text-sm font-medium capitalize rounded gap-x-1 bg-zinc-100 ring-1 ring-zinc-200'
+              className='p-1.5 px-1 text-sm font-medium capitalize rounded gap-x-1 bg-zinc-100 ring-1 ring-zinc-200'
             >
               {val} {/* displays the value */}
               <RiCloseLine
@@ -35,7 +35,7 @@ const SelectedValue = (props: SelectedValueProps) => {
           ))
         ) : (
           //displays a paragraph with the value
-          <Paragraph className='p-1 font-medium capitalize sm:text-sm text-zinc-900'>
+          <Paragraph className='p-1 text-sm font-medium capitalize text-zinc-900'>
             {value}
           </Paragraph>
         )
@@ -43,7 +43,7 @@ const SelectedValue = (props: SelectedValueProps) => {
         // displays a paragraph with the error message or placeholder text
         <Paragraph
           className={twMerge(
-            'text-zinc-600 leading-tight p-1 sm:text-sm',
+            'text-zinc-600 leading-tight p-1 text-sm',
             error && touched && 'text-red-600'
           )}
         >

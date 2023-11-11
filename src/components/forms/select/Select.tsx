@@ -1,23 +1,30 @@
 import { useField } from 'formik';
 import Label from '../Label';
 import Dropdown from './Dropdown';
-import SelectField from './SelectField';
+import FieldWrapper from '../FieldWrapper';
+import { RiArrowDownSLine } from 'react-icons/ri';
+import { motion } from 'framer-motion';
+import SelectedValue from './SelectedValue';
+import Message from '../Message';
 
+// option array item type
 export type Option = {
   title: string; // the title of the option
   value: string; // the value type of the option
 };
 
+// component props type
 export type SelectProps = {
-  name: string; // the name of the field
-  label?: string; // the label for the field
-  multiple?: boolean; //optional check if multiple options are allowed
-  options: Option[]; // array of option
-  placeholder?: string; // the placeholder for the field
+  name: string;
+  label?: string;
+  multiple?: boolean;
+  options: Option[];
+  placeholder?: string;
+  message?: string;
 };
 
 const Select = (props: SelectProps) => {
-  const { name, label, multiple, options, placeholder } = props;
+  const { name, label, multiple, options, placeholder, message } = props;
   const [field, meta, helper] = useField(name);
 
   // remove the given option from the field array
@@ -64,15 +71,32 @@ const Select = (props: SelectProps) => {
         name={name}
         label={label}
       />
-      {/* render select field component*/}
-      <SelectField
+
+      {/* render select field wrapper component*/}
+      <FieldWrapper
+        className='inline-flex items-center justify-between cursor-pointer'
         touched={meta.touched}
-        value={field.value}
-        removeOption={removeOption}
-        placeholder={placeholder}
         error={meta.error}
-        setTouched={() => helper.setTouched(!meta.touched)}
-      />
+        onClick={() => helper.setTouched(!meta.touched)}
+      >
+        {/* render the selected value */}
+        <SelectedValue
+          value={field.value}
+          removeOption={removeOption}
+          placeholder={placeholder}
+          error={meta.error}
+          touched={meta.touched}
+        />
+
+        {/* render animated icon */}
+        <motion.span
+          className='mr-2'
+          animate={meta.touched ? { rotate: -180 } : { rotate: 0 }}
+        >
+          {/* icon indicating the field is a dropdown */}
+          <RiArrowDownSLine className='w-5 h-5 fill-zinc-500' />
+        </motion.span>
+      </FieldWrapper>
 
       {/* render dropdown field component */}
       <Dropdown
@@ -80,6 +104,13 @@ const Select = (props: SelectProps) => {
         options={options}
         setValue={setValue}
         valueExists={valueExists}
+      />
+
+      {/* renders message component */}
+      <Message
+        touched={meta.touched}
+        error={meta.error}
+        message={message}
       />
     </div>
   );

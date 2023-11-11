@@ -58,6 +58,7 @@ const Start = () => {
         label='Textarea'
         limit={100}
         message='hey'
+        placeholder='Hello world!'
       />
       <Amount
         name='amount'

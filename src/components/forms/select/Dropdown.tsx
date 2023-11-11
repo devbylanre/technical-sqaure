@@ -2,11 +2,12 @@ import { Option } from './Select';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// component props
 type DropdownProps = {
-  touched: boolean; //check if dropdown has been touched
-  options: Option[]; // field options array
-  setValue: (e: any) => any; // set field value
-  valueExists: (value: string | number) => boolean; //check if value exists
+  touched: boolean;
+  options: Option[];
+  setValue: (e: any) => any;
+  valueExists: (value: string | number) => boolean;
 };
 
 const Dropdown = (props: DropdownProps) => {
@@ -14,6 +15,7 @@ const Dropdown = (props: DropdownProps) => {
 
   return (
     <AnimatePresence>
+      {/* conditionally display element if field is touched and we have options array and it is greater than 1 */}
       {touched && options && options.length > 0 && (
         <motion.div
           initial={{ y: 20, opacity: 0 }}

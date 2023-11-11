@@ -1,7 +1,7 @@
 import { useField } from 'formik';
-import Helper from '../Message';
 import Label from '../Label';
 import ButtonList from './ButtonList';
+import Message from '../Message';
 
 // Define the properties for each option within the button group
 export type OptionProps = {
@@ -67,7 +67,7 @@ const Button = (props: ButtonProps) => {
       />
 
       {/* Display additional helper information */}
-      <Helper
+      <Message
         touched={meta.touched}
         error={meta.error}
         message={message}
