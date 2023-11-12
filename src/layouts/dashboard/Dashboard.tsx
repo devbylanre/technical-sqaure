@@ -4,9 +4,9 @@ import Header from './Header';
 
 const Dashboard = () => {
   return (
-    <div className='flex flex-row min-h-screen bg-zinc-50'>
+    <div className='flex flex-row min-h-screen'>
       <Sidebar />
-      <div className='flex flex-col w-full bg-white overflow-clip gap-y-5 md:gap-y-8'>
+      <div className='flex flex-col w-full overflow-clip gap-y-5 md:gap-y-8 bg-zinc-100'>
         <Header />
         <Outlet />
       </div>

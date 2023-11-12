@@ -1,42 +1,24 @@
+import { RiFlashlightLine, RiSearchLine, RiMenu4Line } from 'react-icons/ri';
 import Heading from '../../components/ui/typo/Heading';
-import Paragraph from '../../components/ui/typo/Paragraph';
-import {
-  RiFlashlightFill,
-  RiEmotion2Fill,
-  RiSearchLine,
-  RiSparkling2Fill,
-} from 'react-icons/ri';
 
 const Header = () => {
+  const iconClassName: string =
+    'w-5 h-5 transition-all duration-200 ease-in-out cursor-pointer fill-zinc-500 hover:fill-zinc-900';
   return (
-    <div className='inline-flex items-center justify-between w-full px-3 py-2 bg-white border-b md:px-5 border-b-zinc-200'>
-      <div className='inline-flex items-center gap-x-1.5'>
+    <div className='inline-flex items-center justify-between px-3 py-4 md:px-8 gap-x-5'>
+      <div className='inline-flex gap-x-5'>
+        <RiFlashlightLine className={iconClassName} />
+        <RiSearchLine className={iconClassName} />
+      </div>
+
+      <div className='inline-flex items-center gap-x-2'>
+        <Heading className='text-sm font-bold'>Maria Singh</Heading>
         <img
-          className='object-cover w-8 bg-red-100 rounded-full md:w-9 ring-1 ring-zinc-100'
           src='/assets/images/user.png'
           alt='user'
+          className='w-8 rounded-full'
         />
-        <Heading className='text-base md:text-lg'>Andrew Tate</Heading>
-        <Paragraph className='text-xs font-semibold px-1.5 py-0.5 text-blue-800 rounded-lg bg-blue-100 inline-flex gap-x-1 items-center'>
-          <RiSparkling2Fill />
-          Pro: Team
-        </Paragraph>
-      </div>
-
-      {/* search bar */}
-      <div className='items-center hidden h-10 bg-white lg:inline-flex rounded-xl overflow-clip ring-1 ring-zinc-300 lg:w-80 xl:w-96'>
-        <RiSearchLine className='w-5 h-5 mx-2.5 fill-zinc-500' />
-        <input
-          type='text'
-          className='w-full h-full leading-tight outline-none bg-inherit placeholder:text-zinc-500'
-          placeholder='Search courses, authors and members'
-        />
-      </div>
-
-      {/* right section */}
-      <div className='inline-flex items-center gap-x-5'>
-        <RiFlashlightFill className='w-8 h-8 p-1.5 bg-zinc-200 rounded-full fill-gray-500 hover:bg-white hover:ring-1 hover:ring-zinc-300 cursor-pointer transition-all duration-300 hover:fill-zinc-600' />
-        <RiEmotion2Fill className='w-8 h-8 p-1.5 bg-zinc-200 rounded-full fill-gray-500 hover:bg-white hover:ring-1 hover:ring-zinc-300 cursor-pointer transition-all duration-300 hover:fill-zinc-600' />
+        <RiMenu4Line className={iconClassName} />
       </div>
     </div>
   );

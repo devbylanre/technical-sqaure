@@ -43,7 +43,7 @@ const SelectedValue = (props: SelectedValueProps) => {
         // displays a paragraph with the error message or placeholder text
         <Paragraph
           className={twMerge(
-            'text-zinc-600 leading-tight p-1 text-sm',
+            'text-zinc-500 leading-tight p-1 text-sm',
             error && touched && 'text-red-600'
           )}
         >

@@ -2,14 +2,14 @@ import {
   RiHomeWifiLine,
   RiDatabase2Line,
   RiFolder5Line,
-  RiUserVoiceLine,
+  RiTeamLine,
   RiFundsLine,
 } from 'react-icons/ri';
 import Paragraph from '../../components/ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
 import { NavLink } from 'react-router-dom';
 
-const iconClassName: string = 'w-[20px] h-[20px] fill-inherit';
+const iconClassName: string = 'w-5 h-5 fill-inherit';
 
 const items = {
   general: [
@@ -31,7 +31,7 @@ const items = {
     {
       name: 'Square',
       url: 'square',
-      icon: <RiUserVoiceLine className={iconClassName} />,
+      icon: <RiTeamLine className={iconClassName} />,
     },
     {
       name: 'Earnings',
@@ -51,7 +51,8 @@ const Menu = () => {
           to={`/app/${item.url}`}
           className={({ isActive }) =>
             twMerge(
-              'flex w-full md:py-1.5 flex-col md:flex-row items-center gap-1 md:gap-2.5 px-2 transition-all duration-200 ease-in-out py-0'
+              'flex w-full md:py-2 hover:bg-zinc-100 flex-col md:flex-row items-center gap-1 md:gap-4 px-4 transition-all duration-300 ease-in-out py-0',
+              isActive && 'bg-zinc-100'
             )
           }
         >
@@ -64,8 +65,8 @@ const Menu = () => {
               {/* item name or title */}
               <Paragraph
                 className={twMerge(
-                  'text-zinc-700 text-sm md:text-base',
-                  isActive ? 'font-semibold text-zinc-900' : ''
+                  'text-zinc-600 text-sm font-medium',
+                  isActive && 'font-bold text-zinc-900'
                 )}
               >
                 {item.name}
