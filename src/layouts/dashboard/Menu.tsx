@@ -43,7 +43,7 @@ const items = {
 
 const Menu = () => {
   return (
-    <div className='flex flex-row justify-between w-full h-full py-2 md:flex-col gap-x-5 gap-y-2 md:justify-start md:py-0'>
+    <div className='flex flex-row justify-between w-full h-full md:flex-col gap-x-5 gap-y-2 md:justify-start'>
       {/* items list */}
       {items.general.map((item) => (
         <NavLink
@@ -51,8 +51,8 @@ const Menu = () => {
           to={`/app/${item.url}`}
           className={({ isActive }) =>
             twMerge(
-              'flex w-full md:py-2 hover:bg-zinc-100 flex-col md:flex-row items-center gap-1 md:gap-4 px-4 transition-all duration-300 ease-in-out py-0',
-              isActive && 'bg-zinc-100'
+              'flex w-full py-2 hover:bg-zinc-100 flex-col md:flex-row items-center gap-1 md:gap-4 px-4 transition-all duration-300 ease-in-out',
+              isActive && 'bg-none md:bg-zinc-100'
             )
           }
         >
@@ -65,7 +65,7 @@ const Menu = () => {
               {/* item name or title */}
               <Paragraph
                 className={twMerge(
-                  'text-zinc-600 text-sm font-medium',
+                  'text-zinc-600 text-xs md:text-sm font-medium',
                   isActive && 'font-bold text-zinc-900'
                 )}
               >

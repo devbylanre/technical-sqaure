@@ -68,8 +68,9 @@ const generalItems: ChildrenType[] =
 const sidebar = () => {
   return (
     <div className='flex flex-col w-full px-4 py-3 border-r md:w-2/5 xl:w-1/5 gap-y-5 border-r-zinc-200'>
-      {/* header */}
+      {/* renders sidebar */}
       <div>
+        {/* renders sidebar header */}
         <div className='inline-flex items-center mt-3 gap-x-3'>
           <img
             src='/assets/images/user.png'

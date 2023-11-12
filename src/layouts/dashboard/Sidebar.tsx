@@ -5,7 +5,7 @@ import { RiMenu4Fill } from 'react-icons/ri';
 
 const Sidebar = () => {
   return (
-    <div className='fixed bottom-0 flex flex-col justify-between w-full border-r-0 md:border-r border-l-zinc-200 md:w-2/5 lg:w-1/5 gap-y-5 md:static'>
+    <div className='fixed bottom-0 flex flex-col justify-between w-full bg-white shadow md:shadow-none md:border-r md:border-r-zinc-200 md:w-2/5 lg:w-1/5 gap-y-5 md:static backdrop-blur'>
       {/* sidebar header */}
       <div className='hidden md:inline-flex items-end gap-x-1.5 p-4'>
         <Logo className='w-3 h-3 mb-[1.5px]' />

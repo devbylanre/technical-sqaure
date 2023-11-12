@@ -1,10 +1,15 @@
+import { Helmet } from 'react-helmet-async';
 import Container from '../features/registration/Container';
 
 const SignUp = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <>
+      <Helmet>
+        <title>Sign up</title>
+      </Helmet>
+
       <Container />
-    </div>
+    </>
   );
 };
 

@@ -24,7 +24,7 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: '/app/',
+    path: 'app',
     element: <Dashboard />,
     children: [
       {
