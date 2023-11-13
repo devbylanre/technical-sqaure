@@ -40,7 +40,7 @@ const options: OptionType[] = [
 
 const Interest = () => {
   return (
-    <div className='flex flex-col gap-y-10'>
+    <>
       <Heading className='text-2xl font-bold'>
         Select the post feed you would like to <br />
         follow
@@ -51,7 +51,7 @@ const Interest = () => {
         options={options}
         multiple
       />
-    </div>
+    </>
   );
 };
 

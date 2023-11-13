@@ -1,16 +1,17 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import Heading from '../../../components/ui/typo/Heading';
 import Paragraph from '../../../components/ui/typo/Paragraph';
 import { RiFundsLine, RiShiningLine } from 'react-icons/ri';
-import Button from '../../../components/ui/Button';
 import { twMerge } from 'tailwind-merge';
+import { motion } from 'framer-motion';
+import Navigator from './Navigator';
 
 // component props type
-type StartType = {
+type StartPropsType = {
   setValue: (e: string, v: any) => void;
-  setComponent: (e: any) => void;
   value: string;
+  switchToComponent: (e: string) => void;
 };
+
 // plan type
 type PlanType = {
   name: string;
@@ -34,25 +35,27 @@ const plans: PlanType[] = [
   },
 ];
 
-const Start = (props: StartType) => {
-  const { value, setValue, setComponent } = props;
+const Start = (props: StartPropsType) => {
+  const { value, setValue, switchToComponent } = props;
 
-  // handles the requirement for going to next form component
   const handleNext = () => {
     if (!value) return null;
-    setComponent('name');
+
+    switchToComponent('name');
   };
 
   return (
-    <div>
-      <Heading className='text-2xl font-bold'>Create an account</Heading>
-      <Paragraph className='mt-1'>
-        Join Square today and become a professional creative. Create your
-        community and connect with digital experts.
-      </Paragraph>
+    <>
+      <div>
+        <Heading className='text-2xl font-bold'>Create an account</Heading>
+        <Paragraph className='mt-1'>
+          Join Square today and become a professional creative. Create your
+          community and connect with digital experts.
+        </Paragraph>
+      </div>
 
       {/* renders all available plan */}
-      <div className='grid gap-3 mt-8 lg:grid-cols-2'>
+      <div className='grid gap-3 lg:grid-cols-2'>
         {plans.map((plan) => (
           <div
             key={plan.name}
@@ -73,24 +76,16 @@ const Start = (props: StartType) => {
         ))}
       </div>
 
-      {/* conditionally renders the button for going onto the next step if value prop contains a value  */}
+      {/* renders a button used to navigate to name if the plan has a value with animation */}
       {value && (
-        <AnimatePresence>
-          <motion.div
-            animate={{ opacity: [0, 1], y: [4, 0] }}
-            transition={{ duration: 0.4, type: 'spring', stiffness: 400 }}
-          >
-            <Button
-              type='button'
-              className='w-full p-2 mt-8 text-white rounded-lg bg-zinc-900 hover:bg-opacity-90'
-              onClick={handleNext}
-            >
-              Continue
-            </Button>
-          </motion.div>
-        </AnimatePresence>
+        <motion.span animate={{ y: [8, 0], opacity: [0, 1] }}>
+          <Navigator
+            next={`Continue with ${value} plan`}
+            onNext={handleNext}
+          />
+        </motion.span>
       )}
-    </div>
+    </>
   );
 };
 

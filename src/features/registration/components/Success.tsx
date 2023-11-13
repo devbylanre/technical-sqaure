@@ -6,7 +6,7 @@ import SecondaryButton from '../../../components/ui/buttons/SecondaryButton';
 
 const Success = () => {
   return (
-    <div className='flex flex-col gap-y-5'>
+    <>
       <motion.span
         animate={{ opacity: [0, 1], y: [20, 0] }}
         transition={{ duration: 1, type: 'spring' }}
@@ -31,7 +31,7 @@ const Success = () => {
       >
         Continue to Sign In
       </SecondaryButton>
-    </div>
+    </>
   );
 };
 

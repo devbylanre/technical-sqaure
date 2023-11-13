@@ -1,10 +1,26 @@
 import FieldControl from '../../../components/forms/FieldControl';
-import Button from '../../../components/ui/Button';
+import Alert from '../../../components/ui/Alert';
 import Heading from '../../../components/ui/typo/Heading';
+import Paragraph from '../../../components/ui/typo/Paragraph';
+import Navigator from './Navigator';
 
-const Name = () => {
+type NamePropsType = {
+  errors: {
+    firstName?: string;
+    lastName?: string;
+  };
+  switchToComponent: (e: string) => void;
+};
+
+const Name = ({ switchToComponent, errors }: NamePropsType) => {
+  const handleNext = () => {
+    if (errors.firstName && errors.lastName) return null;
+
+    switchToComponent('community');
+  };
+
   return (
-    <div className='flex flex-col gap-y-10'>
+    <>
       <Heading className='text-2xl font-bold'>What's your name?</Heading>
       <div className='flex flex-col gap-y-5'>
         <FieldControl
@@ -21,13 +37,19 @@ const Name = () => {
         />
       </div>
 
-      <div className='inline-flex items-center justify-between'>
-        <Button className='text-zinc-500 hover:text-zinc-900'>Go back</Button>
-        <Button className='p-2 text-white rounded-lg bg-zinc-900'>
-          Continue
-        </Button>
-      </div>
-    </div>
+      <Navigator
+        next='Community'
+        prev='Start'
+        onNext={handleNext}
+        onPrev={() => switchToComponent('start')}
+      />
+
+      <Alert isVisible>
+        <Paragraph className='text-sm font-medium text-amber-900'>
+          Fill in your names correctly to continue to the next step
+        </Paragraph>
+      </Alert>
+    </>
   );
 };
 
