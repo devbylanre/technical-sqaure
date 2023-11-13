@@ -44,7 +44,11 @@ const Name = ({ switchToComponent, errors }: NamePropsType) => {
         onPrev={() => switchToComponent('start')}
       />
 
-      <Alert isVisible>
+      <Alert
+        isVisible
+        state='success'
+        dismissible
+      >
         <Paragraph className='text-sm font-medium text-amber-900'>
           Fill in your names correctly to continue to the next step
         </Paragraph>
