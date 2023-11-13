@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import Heading from '../../../components/ui/typo/Heading';
 import FieldControl from '../../../components/forms/FieldControl';
+import Navigator from './Navigator';
+import Alert from '../../../components/ui/Alert';
 
 type OptionType = {
   title: string;
@@ -38,7 +41,23 @@ const options: OptionType[] = [
   { title: 'azure', value: 'azure' },
 ];
 
-const Interest = () => {
+type InterestPropsType = {
+  value?: string[];
+  switchToComponent: (e: any) => void;
+};
+
+const Interest = ({ value, switchToComponent }: InterestPropsType) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleNext = () => {
+    if (!value || value.length < 1) {
+      setHasError(true);
+      return;
+    }
+
+    switchToComponent('auth');
+  };
+
   return (
     <>
       <Heading className='text-2xl font-bold'>
@@ -51,6 +70,23 @@ const Interest = () => {
         options={options}
         multiple
       />
+
+      <Navigator
+        prev='Interests'
+        next='Authentication'
+        onNext={handleNext}
+        onPrev={() => switchToComponent('interest')}
+      />
+
+      <Alert
+        isVisible={hasError}
+        state='warning'
+        dismissible
+        onDismiss={() => setHasError(false)}
+        timeout={5000}
+      >
+        <span>Select up to five interest</span>
+      </Alert>
     </>
   );
 };

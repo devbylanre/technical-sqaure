@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import FieldControl from '../../../components/forms/FieldControl';
 import Alert from '../../../components/ui/Alert';
 import Heading from '../../../components/ui/typo/Heading';
-import Paragraph from '../../../components/ui/typo/Paragraph';
 import Navigator from './Navigator';
 
+// define the name form component props type
 type NamePropsType = {
   errors: {
     firstName?: string;
@@ -13,15 +14,25 @@ type NamePropsType = {
 };
 
 const Name = ({ switchToComponent, errors }: NamePropsType) => {
-  const handleNext = () => {
-    if (errors.firstName && errors.lastName) return null;
+  const [hasError, setHasError] = useState(false);
 
-    switchToComponent('community');
+  // handle the next form component
+  const handleNext = () => {
+    // check if first name or last name field has a value
+    if (errors.firstName || errors.lastName) {
+      setHasError(true);
+      return null;
+    }
+
+    switchToComponent('community'); // switch form component to community
   };
 
   return (
     <>
+      {/* render heading tag */}
       <Heading className='text-2xl font-bold'>What's your name?</Heading>
+
+      {/* render first name and last name field */}
       <div className='flex flex-col gap-y-5'>
         <FieldControl
           control='input'
@@ -37,6 +48,7 @@ const Name = ({ switchToComponent, errors }: NamePropsType) => {
         />
       </div>
 
+      {/* render button used to navigate between form components */}
       <Navigator
         next='Community'
         prev='Start'
@@ -44,14 +56,15 @@ const Name = ({ switchToComponent, errors }: NamePropsType) => {
         onPrev={() => switchToComponent('start')}
       />
 
+      {/* render an alert if the fields has an error */}
       <Alert
-        isVisible
-        state='success'
+        isVisible={hasError}
+        state='warning'
         dismissible
+        onDismiss={() => setHasError(false)}
+        timeout={5000}
       >
-        <Paragraph className='text-sm font-medium text-amber-900'>
-          Fill in your names correctly to continue to the next step
-        </Paragraph>
+        <span>Fill in your names correctly to continue to the next step</span>
       </Alert>
     </>
   );

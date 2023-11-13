@@ -3,12 +3,31 @@ import FieldControl from '../../../components/forms/FieldControl';
 import Heading from '../../../components/ui/typo/Heading';
 import { RiLockLine, RiLockUnlockLine } from 'react-icons/ri';
 import Navigator from './Navigator';
+import Alert from '../../../components/ui/Alert';
 
-const Auth = () => {
+type AuthPropsTpe = {
+  errors: {
+    email?: string;
+    password?: string;
+  };
+  switchToComponent: (e: any) => void;
+};
+
+const Auth = ({ errors, switchToComponent }: AuthPropsTpe) => {
   const [passwordType, setPasswordType] = useState<string>('password');
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const iconClassName: string =
     'w-4 h-4 mr-2 cursor-pointer fill-zinc-500 hover:fill-zinc-900';
+
+  const handleSubmit = () => {
+    if (errors.email && errors.password) {
+      setHasError(true);
+      return;
+    }
+
+    switchToComponent('success');
+  };
 
   return (
     <>
@@ -51,7 +70,18 @@ const Auth = () => {
       <Navigator
         next='Account Setup'
         prev='Interest'
+        onNext={handleSubmit}
+        onPrev={() => switchToComponent('interest')}
       />
+
+      <Alert
+        state='warning'
+        dismissible
+        onDismiss={() => setHasError(false)}
+        isVisible={hasError}
+      >
+        <span>Make sure email and password fields are filled correctly</span>
+      </Alert>
     </>
   );
 };

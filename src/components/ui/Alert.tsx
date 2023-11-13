@@ -39,11 +39,11 @@ const Alert = (props: AlertProps) => {
   return (
     <div
       className={twMerge(
-        'inline-flex justify-between p-2 border rounded',
-        state === 'success' && 'bg-green-50 border-green-500',
-        state === 'danger' && 'bg-red-50 border-red-300',
-        state === 'warning' && 'bg-amber-50 border-amber-300',
-        state === 'secondary' && 'border-zinc-200 shadow-sm'
+        'inline-flex justify-between p-2 border rounded text-sm font-medium',
+        state === 'success' && 'bg-green-50 text-green-900 border-green-500',
+        state === 'danger' && 'bg-red-50 text-red-900 border-red-300',
+        state === 'warning' && 'bg-amber-50 text-amber-900 border-amber-300',
+        state === 'secondary' && 'border-zinc-200 text-zinc-900 shadow-sm'
       )}
     >
       {/* render the component children */}

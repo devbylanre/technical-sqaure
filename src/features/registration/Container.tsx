@@ -16,7 +16,7 @@ type InitialValuesType = {
   lastName: string;
   community: string;
   description: string;
-  interest: [];
+  interest: string[];
   email: string;
   password: string;
 };
@@ -40,6 +40,9 @@ const validationSchema = Yup.object().shape({
   community: Yup.string().required(
     'What would you like to name your community?'
   ),
+  description: Yup.string().required(
+    'Describe what your community would do or its scope of operation'
+  ),
   interest: Yup.array().min(5, 'Select at least five interest'),
 });
 
@@ -50,6 +53,7 @@ const Container = () => {
     component: string | undefined,
     formik: FormikProps<InitialValuesType>
   ) => {
+    console.log(formik.errors);
     /*
     switch between form component to render based on the parameter component value
     */
@@ -73,13 +77,36 @@ const Container = () => {
           />
         );
       case 'community':
-        return <Community />;
+        return (
+          <Community
+            switchToComponent={switchToComponent}
+            error={formik.errors.community}
+          />
+        );
       case 'description':
-        return <Description />;
+        return (
+          <Description
+            switchToComponent={switchToComponent}
+            error={formik.errors.description}
+          />
+        );
       case 'interest':
-        return <Interest />;
+        return (
+          <Interest
+            value={formik.values.interest}
+            switchToComponent={switchToComponent}
+          />
+        );
       case 'auth':
-        return <Auth />;
+        return (
+          <Auth
+            errors={{
+              email: formik.errors.email,
+              password: formik.errors.password,
+            }}
+            switchToComponent={switchToComponent}
+          />
+        );
       case 'success':
         return <Success />;
       default:
