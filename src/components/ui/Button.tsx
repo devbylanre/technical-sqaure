@@ -1,25 +1,21 @@
+import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface ButtonProps {
+export type ButtonProps = {
   className?: string;
   children: React.ReactNode;
-  type?: 'button' | 'reset' | 'submit';
-  clickEvent?: (e: any) => any;
-  mouseOverEvent?: (e: any) => any;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = (props: ButtonProps) => {
-  const { className, type, children, clickEvent, mouseOverEvent } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <button
       className={twMerge(
-        'inline-flex gap-x-1.5 items-center justify-center font-medium transition-all duration-300 ease-in-out',
-        className
+        className,
+        'inline-flex gap-x-1 items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out rounded'
       )}
-      type={type}
-      onClick={clickEvent}
-      onMouseOver={mouseOverEvent}
+      {...rest}
     >
       {children}
     </button>

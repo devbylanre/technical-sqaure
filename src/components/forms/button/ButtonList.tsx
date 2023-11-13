@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
-import Button from '../../ui/Button';
 import { OptionProps } from './Button';
+import SecondaryButton from '../../ui/buttons/SecondaryButton';
 
 type ButtonListProps = {
   options: OptionProps[];
@@ -16,18 +16,18 @@ const ButtonList = (props: ButtonListProps) => {
       {/* map through the option */}
       {options &&
         options.map((option) => (
-          <Button
+          <SecondaryButton
             key={option.title}
             type='button'
             className={twMerge(
-              'ring-1 ring-zinc-300 text-zinc-600 sm:text-sm font-normal capitalize px-2 py-1 rounded-lg hover:bg-zinc-50 bg-white transition-all duration-300 ease-in-out',
+              'capitalize px-2 py-1 text-zinc-500',
               valueExists(option.value) &&
-                'ring-zinc-900 text-zinc-900 font-medium'
+                'border-zinc-900 text-zinc-900 font-bold'
             )}
-            clickEvent={() => setValue(option.value)}
+            onClick={() => setValue(option.value)}
           >
             {option.title}
-          </Button>
+          </SecondaryButton>
         ))}
     </div>
   );

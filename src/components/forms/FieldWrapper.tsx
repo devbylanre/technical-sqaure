@@ -15,11 +15,11 @@ const FieldWrapper = (props: FieldBlockProps) => {
     <div
       className={twMerge(
         className,
-        'ring-1 ring-zinc-300 outline-none rounded-lg transition-all duration-300 ease-in-out',
-        disabled && 'bg-zinc-50 opacity-90 cursor-not-allowed',
+        'border border-zinc-200 shadow-sm outline-none rounded transition-all duration-300 ease-in-out',
+        disabled && 'bg-zinc-50 opacity-70 cursor-not-allowed',
         touched && !error
-          ? 'ring-zinc-900'
-          : touched && error && 'ring-red-600 text-red-800'
+          ? 'border-zinc-900'
+          : touched && error && 'border-red-600 text-red-700'
       )}
       onClick={onClick}
     >
