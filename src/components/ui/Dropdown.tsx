@@ -7,19 +7,16 @@ type DropdownProps = {
   isVisible: boolean;
 } & MotionProps;
 
-const Dropdown = ({
-  isVisible,
-  children,
-  className,
-  ...rest
-}: DropdownProps) => {
+const Dropdown = (props: DropdownProps) => {
+  const { isVisible, children, className, ...rest } = props;
+
   if (!isVisible) return null;
 
   return (
     <motion.div
       className={twMerge(
         className,
-        'w-[240px] rounded-lg p-2.5 absolute bg-white border-zinc-200 border shadow-sm'
+        'w-[240px] rounded-lg p-1.5 absolute bg-white border-zinc-200 border shadow-sm'
       )}
       {...rest}
     >

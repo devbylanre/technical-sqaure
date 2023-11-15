@@ -64,31 +64,31 @@ const Post = () => {
       <div className='inline-flex items-center justify-between px-3 py-2 border-t border-t-zinc-200'>
         <Button
           type='button'
-          className='text-xs font-bold text-zinc-600'
+          className='items-center'
         >
           <RiThumbUpLine className={iconClassName} />
-          1.2K
+          <span className='text-xs font-bold text-zinc-600'>1.2K</span>
         </Button>
         <Button
           type='button'
-          className='text-xs font-bold text-zinc-600'
+          className='items-center'
         >
           <RiLoopRightLine className={iconClassName} />
-          5K
+          <span className='text-xs font-bold text-zinc-600'>545</span>
         </Button>
         <Button
           type='button'
-          className='text-xs font-bold uppercase text-zinc-600'
+          className='items-center'
         >
           <RiChat1Line className={iconClassName} />
-          800
+          <span className='text-xs font-bold text-zinc-600'>4K</span>
         </Button>
         <Button
           type='button'
-          className='text-xs font-bold text-zinc-600'
+          className='items-center'
         >
           <RiBarChartLine className={iconClassName} />
-          4.5K
+          <span className='text-xs font-bold text-zinc-600'>2.2K</span>
         </Button>
       </div>
     </div>

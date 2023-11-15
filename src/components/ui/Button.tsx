@@ -1,3 +1,4 @@
+import { MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -6,7 +7,8 @@ export type ButtonProps = {
   className?: string;
   state?: 'success' | 'warning' | 'danger' | 'secondary' | 'primary';
   children: React.ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement> &
+  MotionProps;
 
 const Button = (props: ButtonProps) => {
   const { className, state, children, ...rest } = props; //props

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Container from '../features/registration/Container';
+import Container from '../features/registration/AuthContainer';
 
 const SignUp = () => {
   return (
