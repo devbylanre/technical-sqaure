@@ -1,23 +1,21 @@
 import Heading from '../../../components/ui/typo/Heading';
 import FieldControl from '../../../components/forms/FieldControl';
 import Navigator from './Navigator';
-import Alert from '../../../components/ui/Alert';
-import { useState } from 'react';
 
 type DescriptionPropsType = {
   switchToComponent: (e: any) => void;
   error?: string;
+  touched: () => void;
 };
 
-const Description = ({ error, switchToComponent }: DescriptionPropsType) => {
-  const [hasError, setHasError] = useState(false);
+const Description = (props: DescriptionPropsType) => {
+  const { error, touched, switchToComponent } = props;
 
   const handleNext = () => {
     if (error) {
-      setHasError(true);
+      touched();
       return;
     }
-
     switchToComponent('interest');
   };
 
@@ -41,16 +39,6 @@ const Description = ({ error, switchToComponent }: DescriptionPropsType) => {
         onNext={handleNext}
         onPrev={() => switchToComponent('community')}
       />
-
-      <Alert
-        isVisible={hasError}
-        state='warning'
-        dismissible
-        onDismiss={() => setHasError(false)}
-        timeout={5000}
-      >
-        <span>What's your community name?</span>
-      </Alert>
     </>
   );
 };

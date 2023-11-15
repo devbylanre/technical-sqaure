@@ -1,5 +1,4 @@
-import SecondaryButton from '../../../components/ui/buttons/SecondaryButton';
-import PrimaryButton from '../../../components/ui/buttons/PrimaryButton';
+import Button from '../../../components/ui/Button';
 
 type NavigatorProps = {
   prev?: string;
@@ -14,23 +13,25 @@ const Navigator = (props: NavigatorProps) => {
   return (
     <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
       {prev && (
-        <SecondaryButton
+        <Button
+          state='secondary'
           type='button'
           className='px-4 py-2'
           onClick={onPrev}
         >
           {prev}
-        </SecondaryButton>
+        </Button>
       )}
 
       {next && (
-        <PrimaryButton
+        <Button
+          state='primary'
           type='button'
           className='px-4 py-2'
           onClick={onNext}
         >
           {next}
-        </PrimaryButton>
+        </Button>
       )}
     </div>
   );

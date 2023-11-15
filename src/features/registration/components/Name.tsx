@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import FieldControl from '../../../components/forms/FieldControl';
-import Alert from '../../../components/ui/Alert';
 import Heading from '../../../components/ui/typo/Heading';
 import Navigator from './Navigator';
 
@@ -11,16 +9,15 @@ type NamePropsType = {
     lastName?: string;
   };
   switchToComponent: (e: string) => void;
+  touched: () => void;
 };
 
-const Name = ({ switchToComponent, errors }: NamePropsType) => {
-  const [hasError, setHasError] = useState(false);
-
+const Name = ({ switchToComponent, errors, touched }: NamePropsType) => {
   // handle the next form component
   const handleNext = () => {
     // check if first name or last name field has a value
     if (errors.firstName || errors.lastName) {
-      setHasError(true);
+      touched();
       return null;
     }
 
@@ -55,17 +52,6 @@ const Name = ({ switchToComponent, errors }: NamePropsType) => {
         onNext={handleNext}
         onPrev={() => switchToComponent('start')}
       />
-
-      {/* render an alert if the fields has an error */}
-      <Alert
-        isVisible={hasError}
-        state='warning'
-        dismissible
-        onDismiss={() => setHasError(false)}
-        timeout={5000}
-      >
-        <span>Fill in your names correctly to continue to the next step</span>
-      </Alert>
     </>
   );
 };

@@ -10,6 +10,7 @@ import Dashboard from './layouts/dashboard/Dashboard';
 import ProfileLayout from './layouts/profile/ProfileLayout';
 import RootLayout from './layouts/RootLayout';
 import SignUp from './pages/SignUp';
+import Theme from './pages/theme/Theme';
 
 // app routes
 const routes = createBrowserRouter([
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp />,
+      },
+      {
+        path: 'theme',
+        element: <Theme />,
       },
     ],
   },

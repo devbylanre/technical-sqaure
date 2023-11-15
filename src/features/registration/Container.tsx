@@ -36,7 +36,6 @@ const validationSchema = Yup.object().shape({
   plan: Yup.string().required('Select a plan to continue'),
   firstName: Yup.string().required('What is your first name?'),
   lastName: Yup.string().required('What is your last name?'),
-  email: Yup.string().required('What is your email address?'),
   community: Yup.string().required(
     'What would you like to name your community?'
   ),
@@ -44,6 +43,10 @@ const validationSchema = Yup.object().shape({
     'Describe what your community would do or its scope of operation'
   ),
   interest: Yup.array().min(5, 'Select at least five interest'),
+  email: Yup.string().required('What is your email address?'),
+  password: Yup.string()
+    .required('Password is required for account authentication')
+    .min(8, 'Password must be at least 8 characters'),
 });
 
 const Container = () => {
@@ -53,7 +56,7 @@ const Container = () => {
     component: string | undefined,
     formik: FormikProps<InitialValuesType>
   ) => {
-    console.log(formik.errors);
+    console.log(formik);
     /*
     switch between form component to render based on the parameter component value
     */
@@ -70,6 +73,9 @@ const Container = () => {
         return (
           <Name
             switchToComponent={switchToComponent}
+            touched={() =>
+              formik.setTouched({ firstName: true, lastName: true })
+            }
             errors={{
               firstName: formik.errors.firstName,
               lastName: formik.errors.lastName,
@@ -80,6 +86,7 @@ const Container = () => {
         return (
           <Community
             switchToComponent={switchToComponent}
+            touched={() => formik.setTouched({ community: true })}
             error={formik.errors.community}
           />
         );
@@ -87,13 +94,15 @@ const Container = () => {
         return (
           <Description
             switchToComponent={switchToComponent}
+            touched={() => formik.setTouched({ description: true })}
             error={formik.errors.description}
           />
         );
       case 'interest':
         return (
           <Interest
-            value={formik.values.interest}
+            error={formik.errors.interest}
+            touched={() => formik.setTouched({ interest: true })}
             switchToComponent={switchToComponent}
           />
         );
@@ -104,6 +113,7 @@ const Container = () => {
               email: formik.errors.email,
               password: formik.errors.password,
             }}
+            touched={() => formik.setTouched({ email: true, password: true })}
             switchToComponent={switchToComponent}
           />
         );
@@ -118,6 +128,7 @@ const Container = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
+      validateOnMount
       onSubmit={() => {}}
     >
       {(formik) => (

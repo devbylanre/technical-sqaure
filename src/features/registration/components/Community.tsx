@@ -1,20 +1,21 @@
-import { useState } from 'react';
 import FieldControl from '../../../components/forms/FieldControl';
 import Heading from '../../../components/ui/typo/Heading';
 import Navigator from './Navigator';
-import Alert from '../../../components/ui/Alert';
 
 type CommunityPropsType = {
   switchToComponent: (e: any) => void;
   error?: string;
+  touched: () => void;
 };
 
-const Community = ({ error, switchToComponent }: CommunityPropsType) => {
-  const [hasError, setHasError] = useState(false);
-
+const Community = ({
+  error,
+  touched,
+  switchToComponent,
+}: CommunityPropsType) => {
   const handleNext = () => {
     if (error) {
-      setHasError(true);
+      touched();
       return;
     }
 
@@ -40,16 +41,6 @@ const Community = ({ error, switchToComponent }: CommunityPropsType) => {
         onNext={handleNext}
         onPrev={() => switchToComponent('name')}
       />
-
-      <Alert
-        isVisible={hasError}
-        state='warning'
-        dismissible
-        onDismiss={() => setHasError(false)}
-        timeout={5000}
-      >
-        <span>What's your community name?</span>
-      </Alert>
     </>
   );
 };

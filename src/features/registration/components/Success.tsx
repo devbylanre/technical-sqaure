@@ -2,7 +2,7 @@ import Heading from '../../../components/ui/typo/Heading';
 import { RiCheckLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 import Paragraph from '../../../components/ui/typo/Paragraph';
-import SecondaryButton from '../../../components/ui/buttons/SecondaryButton';
+import Button from '../../../components/ui/Button';
 
 const Success = () => {
   return (
@@ -25,12 +25,13 @@ const Success = () => {
       </div>
 
       {/* proceed to the sign in page to complete the sign up verification */}
-      <SecondaryButton
+      <Button
+        state='primary'
         type='button'
-        className='w-full p-2'
+        className='w-full p-2.5'
       >
         Continue to Sign In
-      </SecondaryButton>
+      </Button>
     </>
   );
 };

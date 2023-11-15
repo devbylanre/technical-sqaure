@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import Heading from '../../../components/ui/typo/Heading';
 import FieldControl from '../../../components/forms/FieldControl';
 import Navigator from './Navigator';
-import Alert from '../../../components/ui/Alert';
 
 type OptionType = {
   title: string;
@@ -42,19 +40,17 @@ const options: OptionType[] = [
 ];
 
 type InterestPropsType = {
-  value?: string[];
+  error?: string[] | string;
   switchToComponent: (e: any) => void;
+  touched: () => void;
 };
 
-const Interest = ({ value, switchToComponent }: InterestPropsType) => {
-  const [hasError, setHasError] = useState(false);
-
+const Interest = ({ error, touched, switchToComponent }: InterestPropsType) => {
   const handleNext = () => {
-    if (!value || value.length < 1) {
-      setHasError(true);
+    if (error) {
+      touched();
       return;
     }
-
     switchToComponent('auth');
   };
 
@@ -77,16 +73,6 @@ const Interest = ({ value, switchToComponent }: InterestPropsType) => {
         onNext={handleNext}
         onPrev={() => switchToComponent('interest')}
       />
-
-      <Alert
-        isVisible={hasError}
-        state='warning'
-        dismissible
-        onDismiss={() => setHasError(false)}
-        timeout={5000}
-      >
-        <span>Select up to five interest</span>
-      </Alert>
     </>
   );
 };

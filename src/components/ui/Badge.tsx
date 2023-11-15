@@ -22,7 +22,7 @@ const Badge = ({
   return (
     <div
       className={twMerge(
-        'inline-flex items-center px-2 py-1.5 rounded-full w-fit gap-x-1.5 font-semibold text-xs',
+        'inline-flex items-center px-2.5 py-1.5 rounded-full w-fit gap-x-1 font-semibold text-xs',
         state === 'success' && 'bg-green-100 text-green-900',
         state === 'danger' && 'bg-red-100 text-red-900',
         state === 'warning' && 'bg-amber-100  text-amber-900',

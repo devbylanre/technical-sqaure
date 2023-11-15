@@ -3,7 +3,6 @@ import FieldControl from '../../../components/forms/FieldControl';
 import Heading from '../../../components/ui/typo/Heading';
 import { RiLockLine, RiLockUnlockLine } from 'react-icons/ri';
 import Navigator from './Navigator';
-import Alert from '../../../components/ui/Alert';
 
 type AuthPropsTpe = {
   errors: {
@@ -11,21 +10,43 @@ type AuthPropsTpe = {
     password?: string;
   };
   switchToComponent: (e: any) => void;
+  touched: () => void;
 };
 
-const Auth = ({ errors, switchToComponent }: AuthPropsTpe) => {
-  const [passwordType, setPasswordType] = useState<string>('password');
-  const [hasError, setHasError] = useState<boolean>(false);
+type AuthPasswordProps = {
+  type: string;
+  setType: (e: string) => void;
+};
 
+export const AuthPassword = ({ type, setType }: AuthPasswordProps) => {
   const iconClassName: string =
     'w-4 h-4 mr-2 cursor-pointer fill-zinc-500 hover:fill-zinc-900';
 
+  return (
+    <>
+      {type === 'password' ? (
+        <RiLockUnlockLine
+          className={iconClassName}
+          onClick={() => setType('text')}
+        />
+      ) : (
+        <RiLockLine
+          className={iconClassName}
+          onClick={() => setType('password')}
+        />
+      )}
+    </>
+  );
+};
+
+const Auth = ({ errors, touched, switchToComponent }: AuthPropsTpe) => {
+  const [passwordType, setPasswordType] = useState<string>('password');
+
   const handleSubmit = () => {
-    if (errors.email && errors.password) {
-      setHasError(true);
+    if (errors.email || errors.password) {
+      touched();
       return;
     }
-
     switchToComponent('success');
   };
 
@@ -49,17 +70,10 @@ const Auth = ({ errors, switchToComponent }: AuthPropsTpe) => {
           name='password'
           label='Password'
           suffix={
-            passwordType === 'password' ? (
-              <RiLockUnlockLine
-                className={iconClassName}
-                onClick={() => setPasswordType('text')}
-              />
-            ) : (
-              <RiLockLine
-                className={iconClassName}
-                onClick={() => setPasswordType('password')}
-              />
-            )
+            <AuthPassword
+              type={passwordType}
+              setType={setPasswordType}
+            />
           }
           placeholder='Use a combination of letters and numbers'
           message='Minimum of 8 characters containing at least one uppercase, lowercase, number, special characters, and no spaces'
@@ -73,15 +87,6 @@ const Auth = ({ errors, switchToComponent }: AuthPropsTpe) => {
         onNext={handleSubmit}
         onPrev={() => switchToComponent('interest')}
       />
-
-      <Alert
-        state='warning'
-        dismissible
-        onDismiss={() => setHasError(false)}
-        isVisible={hasError}
-      >
-        <span>Make sure email and password fields are filled correctly</span>
-      </Alert>
     </>
   );
 };
