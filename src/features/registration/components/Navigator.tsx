@@ -14,7 +14,7 @@ const Navigator = (props: NavigatorProps) => {
     <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
       {prev && (
         <Button
-          state='secondary'
+          variant='outline'
           type='button'
           className='px-4 py-2'
           onClick={onPrev}
@@ -25,7 +25,7 @@ const Navigator = (props: NavigatorProps) => {
 
       {next && (
         <Button
-          state='primary'
+          variant='default'
           type='button'
           className='px-4 py-2'
           onClick={onNext}

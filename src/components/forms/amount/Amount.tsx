@@ -51,14 +51,11 @@ const Amount = (props: AmountProps) => {
   return (
     <div className='flex flex-col gap-y-1.5'>
       {/* renders the label */}
-      <Label
-        name={name}
-        label={label}
-      />
+      <Label name={name}>{label}</Label>
 
       {/* renders the field with prefix and/or suffix */}
       <FieldWrapper
-        className='relative inline-flex items-center justify-between p-2 overflow-hidden bg-zinc-100'
+        className='relative inline-flex items-center justify-between px-2 overflow-hidden bg-zinc-100'
         touched={meta.touched}
         error={meta.error}
         disabled={disabled}

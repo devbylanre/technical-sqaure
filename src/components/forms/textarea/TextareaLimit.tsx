@@ -7,7 +7,7 @@ type TextareaLimitProps = {
 const TextareaLimit = ({ value, limit }: TextareaLimitProps) => {
   if (!value) return null;
   return (
-    <Paragraph className='self-end py-0.5 px-1.5 text-xs font-medium'>
+    <Paragraph className='self-end text-xs font-medium'>
       {limit && value
         ? limit > value.length
           ? value.length + '/' + limit

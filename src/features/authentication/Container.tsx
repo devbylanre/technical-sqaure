@@ -4,7 +4,6 @@ import Heading from '../../components/ui/typo/Heading';
 import Paragraph from '../../components/ui/typo/Paragraph';
 import FieldControl from '../../components/forms/FieldControl';
 import Button from '../../components/ui/Button';
-import { Link } from 'react-router-dom';
 
 type InitialValuesProps = {
   auth: string;
@@ -56,12 +55,7 @@ const AuthContainer = () => {
               placeholder='Enter your account password'
             />
 
-            <Button
-              state='primary'
-              className='p-2.5'
-            >
-              Sign in
-            </Button>
+            <Button className='p-2.5'>Sign in</Button>
           </div>
 
           <div className='flex flex-col p-4 border-t gap-y-2 border-t-zinc-200'>

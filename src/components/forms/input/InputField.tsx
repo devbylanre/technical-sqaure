@@ -15,7 +15,7 @@ const InputField = (props: inputFieldProps) => {
     <Field
       name={name}
       className={twMerge(
-        'p-2 bg-transparent outline-none text-sm font-medium flex-1 placeholder:font-normal placeholder:text-zinc-500',
+        'px-2 bg-transparent outline-none text-sm font-medium flex-1 placeholder:font-normal placeholder:text-zinc-500',
         disabled && 'cursor-not-allowed'
       )}
       {...rest}

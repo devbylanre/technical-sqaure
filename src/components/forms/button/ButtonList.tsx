@@ -12,15 +12,17 @@ const ButtonList = (props: ButtonListProps) => {
   const { options, valueExists, setValue } = props;
 
   return (
-    <div className='flex flex-wrap items-start gap-2'>
+    <div className='flex flex-wrap items-start gap-1.5'>
       {/* map through the option */}
       {options &&
         options.map((option) => (
           <Button
             key={option.title}
+            variant='outline'
+            size='sm'
             type='button'
             className={twMerge(
-              'capitalize px-2 py-1 text-zinc-500 border border-zinc-200 shadow-sm hover:bg-zinc-50',
+              'capitalize px-2 py-1 text-zinc-500 border border-zinc-200 shadow-sm hover:bg-zinc-50 rounded-md',
               valueExists(option.value) &&
                 'border-zinc-900 text-zinc-900 font-bold'
             )}

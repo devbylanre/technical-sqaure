@@ -6,9 +6,9 @@ import {
 } from 'react-icons/ri';
 import Badge from '../../components/ui/Badge';
 
-type State = 'danger' | 'success' | 'warning' | 'secondary';
+type State = 'danger' | 'success' | 'warning' | 'outline';
 
-const basicBadges: State[] = ['secondary', 'danger', 'warning', 'success'];
+const basicBadges: State[] = ['outline', 'danger', 'warning', 'success'];
 
 type badgesWithIconProps = {
   title: string;
@@ -37,7 +37,7 @@ const badgesWithIcon: badgesWithIconProps[] = [
   {
     title: '5 Designers',
     icon: <RiPenNibLine className={iconClassName} />,
-    state: 'secondary',
+    state: 'outline',
   },
 ];
 
@@ -46,7 +46,7 @@ export const BasicBadges = () => {
     <div className='flex flex-wrap gap-2'>
       {basicBadges.map((badge) => (
         <Badge
-          state={badge}
+          variant={badge}
           key={badge}
           isVisible={true}
         >
@@ -63,7 +63,7 @@ export const BadgesWithIcon = () => {
       {badgesWithIcon.map((badge) => (
         <Badge
           key={badge.state}
-          state={badge.state}
+          variant={badge.state}
           isVisible={true}
         >
           {badge.icon}
@@ -80,7 +80,7 @@ export const BadgesWithDismiss = () => {
       {badgesWithIcon.map((badge) => (
         <Badge
           key={badge.state}
-          state={badge.state}
+          variant={badge.state}
           isVisible={true}
           dismissible
         >

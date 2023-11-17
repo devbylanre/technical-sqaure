@@ -21,10 +21,7 @@ const Input = (props: InputProps) => {
   return (
     <div className='flex flex-col gap-y-1.5'>
       {/* Render the label component */}
-      <Label
-        name={name}
-        label={label}
-      />
+      <Label name={name}> {label} </Label>
 
       {/* Render the input field component */}
       <FieldWrapper

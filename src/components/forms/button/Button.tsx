@@ -54,10 +54,7 @@ const Button = (props: ButtonProps) => {
   return (
     <div className='flex flex-col gap-y-1.5'>
       {/* Display the label block */}
-      <Label
-        name={field.name}
-        label={label}
-      />
+      <Label name={field.name}> {label}</Label>
 
       {/* Render the button list component */}
       <ButtonList

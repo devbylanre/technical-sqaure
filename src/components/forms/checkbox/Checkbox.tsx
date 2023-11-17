@@ -20,10 +20,7 @@ const Checkbox = (props: CheckboxProps) => {
       {/* render the section/block containing label and message component */}
       <div className='flex flex-col gap-y-0.5'>
         {/* renders label component */}
-        <Label
-          name={name}
-          label={label}
-        />
+        <Label name={name}> {label}</Label>
         {/* renders message component */}
         <Message
           error={meta.error}

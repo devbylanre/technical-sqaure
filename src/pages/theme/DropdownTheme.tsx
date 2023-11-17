@@ -17,7 +17,7 @@ const DropdownTheme = () => {
   return (
     <div className='relative'>
       <Button
-        state='secondary'
+        variant='outline'
         type='button'
         className='p-2'
         onClick={() => setShowDropdown(!showDropdown)}

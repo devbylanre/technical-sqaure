@@ -22,10 +22,7 @@ const Toggle = (props: ToggleProps) => {
     <div className='inline-flex gap-y-1.5 items-center justify-between gap-x-8'>
       <div>
         {/* render the label field */}
-        <Label
-          name={name}
-          label={label}
-        />
+        <Label name={name}>{label} </Label>
         {/* render error block */}
         <Message
           error={meta.error}

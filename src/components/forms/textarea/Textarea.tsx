@@ -40,14 +40,11 @@ const Textarea = (props: TextareaProps) => {
   return (
     <div className='flex flex-col gap-y-1.5'>
       {/* render field label */}
-      <Label
-        name={name}
-        label={label}
-      />
+      <Label name={name}>{label} </Label>
 
       {/* render textarea field */}
       <FieldWrapper
-        className='flex flex-col'
+        className='flex flex-col p-2 h-fit'
         error={meta.error}
         touched={meta.touched}
       >

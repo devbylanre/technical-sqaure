@@ -26,7 +26,6 @@ const Success = () => {
 
       {/* proceed to the sign in page to complete the sign up verification */}
       <Button
-        state='primary'
         type='button'
         className='w-full p-2.5'
       >

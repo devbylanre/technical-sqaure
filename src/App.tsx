@@ -12,6 +12,7 @@ import SignIn from './pages/SignIn';
 import Dashboard from './layouts/dashboard/Dashboard';
 import ProfileLayout from './layouts/profile/ProfileLayout';
 import RootLayout from './layouts/RootLayout';
+import Post from './pages/Post';
 
 // app routes
 const routes = createBrowserRouter([
@@ -26,6 +27,10 @@ const routes = createBrowserRouter([
       {
         path: 'auth',
         element: <SignIn />,
+      },
+      {
+        path: 'post',
+        element: <Post />,
       },
       {
         path: 'theme',

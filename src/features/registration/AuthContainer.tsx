@@ -19,6 +19,7 @@ type InitialValuesType = {
   interest: string[];
   email: string;
   password: string;
+  gender: string;
 };
 
 const initialValues: InitialValuesType = {
@@ -30,6 +31,7 @@ const initialValues: InitialValuesType = {
   interest: [],
   email: '',
   password: '',
+  gender: '',
 };
 
 const validationSchema = Yup.object().shape({
@@ -56,7 +58,7 @@ const Container = () => {
     component: string | undefined,
     formik: FormikProps<InitialValuesType>
   ) => {
-    console.log(formik);
+    //console.log(formik);
     /*
     switch between form component to render based on the parameter component value
     */

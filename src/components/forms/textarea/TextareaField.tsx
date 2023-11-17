@@ -16,7 +16,7 @@ const TextareaField = (props: TextareaFieldProps) => {
       name={name}
       id={name}
       rows={1}
-      className='w-full h-full p-2 text-sm font-medium bg-transparent outline-none resize-none sm:text-sm placeholder:font-normal placeholder:text-zinc-500'
+      className='w-full h-full text-sm font-medium bg-transparent outline-none resize-none placeholder:font-normal placeholder:text-zinc-500'
       onFocus={handleFocus}
       onBlur={handleBlur}
       {...rest}
