@@ -1,8 +1,8 @@
 import {
   RiCompass4Line,
-  RiRadarLine,
+  RiParentLine,
   RiFundsLine,
-  RiHomeLine,
+  RiPlanetLine,
 } from 'react-icons/ri';
 import Paragraph from '../../components/ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
@@ -15,7 +15,7 @@ const items = {
     {
       name: 'Home',
       url: '',
-      icon: <RiHomeLine className={iconClassName} />,
+      icon: <RiPlanetLine className={iconClassName} />,
     },
     {
       name: 'Courses',
@@ -25,7 +25,7 @@ const items = {
     {
       name: 'Community',
       url: 'square',
-      icon: <RiRadarLine className={iconClassName} />,
+      icon: <RiParentLine className={iconClassName} />,
     },
     {
       name: 'Analytics',

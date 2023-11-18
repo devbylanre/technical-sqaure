@@ -1,43 +1,37 @@
 import Heading from '../ui/typo/Heading';
 import {
-  RiChatHistoryLine,
-  RiFlashlightLine,
+  RiHeart3Fill,
   RiBookmarkLine,
   RiAttachment2,
+  RiPriceTag3Line,
 } from 'react-icons/ri';
 import Badge from '../ui/Badge';
 import { Avatar, AvatarFallback } from '../ui/Avatar';
 import Button from '../ui/Button';
-import Paragraph from '../ui/typo/Paragraph';
 
 export const Post = () => {
   return (
-    <div className='flex flex-col w-full col-span-4 p-3 bg-white border rounded-lg shadow-sm border-zinc-200 gap-y-3'>
+    <div className='flex flex-col w-full col-span-4 p-3 bg-white border rounded-lg shadow-sm border-zinc-200 gap-y-5'>
       <Heading className='text-base font-bold md:text-lg'>
-        Building a Saas project using MERN stack
+        Building a SaaS project using MERN stack
       </Heading>
 
       <div className='inline-flex justify-between w-full'>
-        <Badge isVisible>
-          <RiChatHistoryLine className='w-3.5 h-3.5' />
-          2h 10m
-        </Badge>
         <Badge
           variant='success'
           isVisible
         >
-          <RiFlashlightLine className='w-3.5 h-3.5' />
-          MERN
+          <RiHeart3Fill className='w-3.5 h-3.5' />
+          Programming
         </Badge>
-      </div>
 
-      <div>
-        <Paragraph className='text-sm'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet in
-          saepe quaerat optio blanditiis possimus nihil atque veniam, aut unde
-          libero soluta assumenda! Velit molestiae quis quia, voluptates quo
-          facere.
-        </Paragraph>
+        <Badge
+          variant='outline'
+          isVisible
+        >
+          <RiPriceTag3Line className='w-3.5 h-3.5' />
+          $150
+        </Badge>
       </div>
 
       <div className='inline-flex items-center justify-between'>

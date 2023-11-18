@@ -15,8 +15,8 @@ const Dropdown = (props: DropdownProps) => {
   return (
     <motion.div
       className={twMerge(
-        className,
-        'w-[240px] rounded-lg p-1.5 absolute bg-white border-zinc-200 border shadow-sm'
+        'w-[240px] rounded-lg absolute bg-white border-zinc-200 border shadow-sm',
+        className
       )}
       {...rest}
     >

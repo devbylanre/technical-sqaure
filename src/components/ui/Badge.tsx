@@ -18,7 +18,7 @@ const badgeVariants = {
   initialClassName:
     'inline-flex items-center px-2 h-6 rounded-full w-fit gap-x-1 font-semibold text-xs',
   variants: {
-    outline: 'bg-none border border-zinc-200 shadow-sm',
+    outline: 'bg-white border border-zinc-200 shadow-sm',
     success: 'bg-green-100 text-green-900',
     danger: 'bg-red-100 text-red-900',
     warning: 'bg-amber-100 text-amber-900',
