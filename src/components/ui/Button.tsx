@@ -6,7 +6,7 @@ import { cn } from '../../utils/utils';
 export type ButtonProps = {
   className?: string;
   variant?: 'default' | 'outline' | 'danger' | 'warning' | 'success';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   children: React.ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement> &
   MotionProps;

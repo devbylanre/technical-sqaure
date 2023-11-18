@@ -1,9 +1,8 @@
 import {
-  RiHomeWifiLine,
-  RiDatabase2Line,
-  RiFolder5Line,
-  RiTeamLine,
+  RiCompass4Line,
+  RiRadarLine,
   RiFundsLine,
+  RiHomeLine,
 } from 'react-icons/ri';
 import Paragraph from '../../components/ui/typo/Paragraph';
 import { twMerge } from 'tailwind-merge';
@@ -16,25 +15,20 @@ const items = {
     {
       name: 'Home',
       url: '',
-      icon: <RiHomeWifiLine className={iconClassName} />,
+      icon: <RiHomeLine className={iconClassName} />,
     },
     {
       name: 'Courses',
       url: 'courses',
-      icon: <RiDatabase2Line className={iconClassName} />,
+      icon: <RiCompass4Line className={iconClassName} />,
     },
     {
-      name: 'Docs',
-      url: 'docs',
-      icon: <RiFolder5Line className={iconClassName} />,
-    },
-    {
-      name: 'Square',
+      name: 'Community',
       url: 'square',
-      icon: <RiTeamLine className={iconClassName} />,
+      icon: <RiRadarLine className={iconClassName} />,
     },
     {
-      name: 'Earnings',
+      name: 'Analytics',
       url: 'profile',
       icon: <RiFundsLine className={iconClassName} />,
     },
@@ -43,7 +37,7 @@ const items = {
 
 const Menu = () => {
   return (
-    <div className='flex flex-row justify-between w-full h-full md:flex-col gap-x-5 gap-y-2 md:justify-start'>
+    <div className='flex flex-row justify-between w-full h-full px-2 md:flex-col gap-x-5 gap-y-1 md:justify-start'>
       {/* items list */}
       {items.general.map((item) => (
         <NavLink
@@ -51,7 +45,7 @@ const Menu = () => {
           to={`/app/${item.url}`}
           className={({ isActive }) =>
             twMerge(
-              'flex w-full py-2 hover:bg-zinc-100 flex-col md:flex-row items-center gap-1 md:gap-4 px-4 transition-all duration-300 ease-in-out',
+              'flex w-full py-2 hover:bg-zinc-100 flex-col md:flex-row items-center gap-1 md:gap-4 px-4 transition-all duration-300 ease-in-out rounded-md',
               isActive && 'bg-none md:bg-zinc-100'
             )
           }

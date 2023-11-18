@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Post from '../components/templates/Post';
+import { Post } from '../components/templates/Post';
 
 const Home = () => {
   return (

@@ -10,12 +10,13 @@ type BadgeProps = {
   onDismiss?: (e: any) => void;
   isVisible: boolean;
   dismissible?: boolean;
+  className?: string;
 } & HTMLAttributes<HTMLDivElement> &
   MotionProps;
 
 const badgeVariants = {
   initialClassName:
-    'inline-flex items-center px-2.5 h-7 rounded-full w-fit gap-x-1 font-semibold text-xs',
+    'inline-flex items-center px-2 h-6 rounded-full w-fit gap-x-1 font-semibold text-xs',
   variants: {
     outline: 'bg-none border border-zinc-200 shadow-sm',
     success: 'bg-green-100 text-green-900',
@@ -36,8 +37,15 @@ const badgeIconVariants = {
 };
 
 const Badge = (props: BadgeProps) => {
-  const { children, variant, isVisible, dismissible, onDismiss, ...rest } =
-    props;
+  const {
+    children,
+    className,
+    variant,
+    isVisible,
+    dismissible,
+    onDismiss,
+    ...rest
+  } = props;
 
   if (!isVisible) return null; // hide the component if the isVisible prop is false
 
@@ -45,7 +53,8 @@ const Badge = (props: BadgeProps) => {
     <div
       className={cn(
         badgeVariants.initialClassName,
-        badgeVariants.variants[variant || 'outline']
+        badgeVariants.variants[variant || 'outline'],
+        className
       )}
       {...rest}
     >
