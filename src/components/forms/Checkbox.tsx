@@ -11,6 +11,11 @@ export type CheckboxProps = {
 const Checkbox = ({ name, className }: CheckboxProps) => {
   const [field, {}, helper] = useField(name);
 
+  const onChecked = () => {
+    helper.setTouched(true);
+    helper.setValue(!field.value);
+  };
+
   return (
     <div
       className={twMerge(
@@ -18,7 +23,7 @@ const Checkbox = ({ name, className }: CheckboxProps) => {
         field.value && 'bg-green-500 border-green-500',
         className
       )}
-      onClick={() => helper.setValue(!field.value)}
+      onClick={onChecked}
     >
       {/* renders icon when field value is true and null when it's opposite */}
       {field.value ? <RiCheckFill className='fill-white' /> : null}

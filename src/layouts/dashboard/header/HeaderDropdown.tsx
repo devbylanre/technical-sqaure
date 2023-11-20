@@ -1,7 +1,7 @@
 import Dropdown from '../../../components/ui/Dropdown';
 import { AnimatePresence } from 'framer-motion';
-import Paragraph from '../../../components/ui/typo/Paragraph';
-import Heading from '../../../components/ui/typo/Heading';
+import Paragraph from '../../../components/ui/Paragraph';
+import Heading from '../../../components/ui/Heading';
 import { Avatar, AvatarFallback } from '../../../components/ui/Avatar';
 import {
   RiEditCircleLine,

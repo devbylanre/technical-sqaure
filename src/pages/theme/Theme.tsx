@@ -1,5 +1,5 @@
-import Heading from '../../components/ui/typo/Heading';
-import Paragraph from '../../components/ui/typo/Paragraph';
+import Heading from '../../components/ui/Heading';
+import Paragraph from '../../components/ui/Paragraph';
 import { BadgesWithDismiss, BadgesWithIcon, BasicBadges } from './BadgeTheme';
 import DropdownTheme from './DropdownTheme';
 import LightWrapper from './LightWrapper';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../../components/ui/Button';
 import Dropdown from '../../components/ui/Dropdown';
-import Paragraph from '../../components/ui/typo/Paragraph';
+import Paragraph from '../../components/ui/Paragraph';
 import { AnimatePresence } from 'framer-motion';
 
 const options = [

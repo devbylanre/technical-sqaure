@@ -1,6 +1,6 @@
 import { Field } from '../../../components/forms/Field';
 import Input from '../../../components/forms/Input';
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 import Navigator from './Navigator';
 import { Message } from '../../../components/forms/Message';
 import { FieldGroup } from '../../../components/forms/FieldGroup';

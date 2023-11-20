@@ -5,7 +5,7 @@ import {
   RiMenu4Line,
   RiCloseLine,
 } from 'react-icons/ri';
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 import { HeaderDropdown } from './HeaderDropdown';
 import { Avatar, AvatarFallback } from '../../../components/ui/Avatar';
 import { AnimatePresence } from 'framer-motion';

@@ -1,4 +1,4 @@
-import Heading from '../ui/typo/Heading';
+import Heading from '../ui/Heading';
 import {
   RiBookmarkLine,
   RiAttachment2,
@@ -8,7 +8,7 @@ import {
 import Badge from '../ui/Badge';
 import { Avatar, AvatarFallback } from '../ui/Avatar';
 import Button from '../ui/Button';
-import Paragraph from '../ui/typo/Paragraph';
+import Paragraph from '../ui/Paragraph';
 
 export const PostCard = () => {
   return (

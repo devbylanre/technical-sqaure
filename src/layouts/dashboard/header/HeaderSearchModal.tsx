@@ -1,8 +1,8 @@
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 import { Modal } from '../../../components/ui/Modal';
 import { Form, Formik } from 'formik';
 import { RiCloseLine, RiUser4Line } from 'react-icons/ri';
-import Paragraph from '../../../components/ui/typo/Paragraph';
+import Paragraph from '../../../components/ui/Paragraph';
 
 type HeaderSearchModalProps = {
   isVisible: boolean;

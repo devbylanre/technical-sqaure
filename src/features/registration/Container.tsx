@@ -9,6 +9,7 @@ import Interest from './components/Interest';
 import Auth from './components/Auth';
 import Success from './components/Success';
 import useComponentSwitch from './hooks/useComponentSwitch';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type InitialValuesProps = {
   plan: string;
@@ -19,7 +20,7 @@ type InitialValuesProps = {
   interest: string[];
   email: string;
   password: string;
-  gender: string;
+  accept: boolean;
 };
 
 const initialValues: InitialValuesProps = {
@@ -31,7 +32,7 @@ const initialValues: InitialValuesProps = {
   interest: [],
   email: '',
   password: '',
-  gender: '',
+  accept: false,
 };
 
 const validationSchema = Yup.object().shape({
@@ -49,6 +50,9 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .required('Password is required for account authentication')
     .min(8, 'Password must be at least 8 characters'),
+  accept: Yup.boolean().isTrue(
+    'To complete registration, you have to accept our Terms and Conditions'
+  ),
 });
 
 export const Container = () => {
@@ -111,8 +115,11 @@ export const Container = () => {
             errors={{
               email: formik.errors.email,
               password: formik.errors.password,
+              accept: formik.errors.accept,
             }}
-            touched={() => formik.setTouched({ email: true, password: true })}
+            touched={() =>
+              formik.setTouched({ email: true, password: true, accept: true })
+            }
             switchToComponent={switchToComponent}
           />
         );
@@ -127,16 +134,20 @@ export const Container = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      validateOnMount
       onSubmit={() => {}}
     >
       {(formik) => (
         <Form className='flex flex-col min-h-screen md:flex-row'>
           {/* renders a form component based on the value of the value of the use state hook - component */}
           <div className='flex flex-col items-center justify-center basis-1/2'>
-            <div className='flex flex-col w-full p-3 gap-y-8 md:p-0 md:w-4/5 xl:w-3/5'>
+            <motion.div
+              className='flex flex-col w-full p-3 gap-y-8 md:p-0 md:w-4/5 xl:w-3/5'
+              animate={{ opacity: [0, 1] }}
+              transition={{ duration: 0.4 }}
+              key={currentComponent}
+            >
               {HandleRenderComponent(currentComponent, formik)}
-            </div>
+            </motion.div>
           </div>
 
           {/* this section renders an heading tag with font size of 4xl and an animated word that changes content every 3 seconds. Hidden on mobile but visible on devices with screen size >= 1024 */}

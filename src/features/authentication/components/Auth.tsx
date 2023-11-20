@@ -1,5 +1,5 @@
-import Heading from '../../../components/ui/typo/Heading';
-import Paragraph from '../../../components/ui/typo/Paragraph';
+import Heading from '../../../components/ui/Heading';
+import Paragraph from '../../../components/ui/Paragraph';
 import Button from '../../../components/ui/Button';
 import { SocialButtons } from './SocialButtons';
 import { Field } from '../../../components/forms/Field';

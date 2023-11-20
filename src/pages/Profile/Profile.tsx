@@ -1,4 +1,4 @@
-import Heading from '../../components/ui/typo/Heading';
+import Heading from '../../components/ui/Heading';
 
 const Profile = () => {
   return (

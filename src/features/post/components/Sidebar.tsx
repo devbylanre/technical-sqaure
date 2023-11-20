@@ -7,7 +7,7 @@ import {
   RiParagraph,
   RiVideoAddFill,
 } from 'react-icons/ri';
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 
 const widgets = [
   {

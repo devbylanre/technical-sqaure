@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 
 // an array of words containing list of digital experts
 const array: string[] = ['developers', 'writers', 'designers', 'marketers'];

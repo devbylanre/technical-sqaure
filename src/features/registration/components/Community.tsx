@@ -3,7 +3,7 @@ import { FieldGroup } from '../../../components/forms/FieldGroup';
 import Input from '../../../components/forms/Input';
 import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 import Navigator from './Navigator';
 
 type CommunityPropsType = {

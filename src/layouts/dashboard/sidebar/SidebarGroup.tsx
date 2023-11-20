@@ -1,4 +1,4 @@
-import Paragraph from '../../../components/ui/typo/Paragraph';
+import Paragraph from '../../../components/ui/Paragraph';
 import { twMerge } from 'tailwind-merge';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';

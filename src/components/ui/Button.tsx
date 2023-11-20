@@ -17,10 +17,10 @@ const buttonVariants = {
   variants: {
     default: 'bg-zinc-900 text-white hover:bg-zinc-700',
     outline:
-      'border border-zinc-200 shadow-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900',
+      'border border-zinc-200 shadow shadow-zinc-200/20 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900',
     danger: 'bg-red-600 text-white hover:bg-red-500',
     warning: 'bg-amber-600 text-white hover:bg-amber-800',
-    success: 'bg-green-600 text-white hover:bg-green-800',
+    success: 'bg-green-600 text-white hover:bg-green-700',
   },
   sizes: {
     xs: 'text-xs h-6',

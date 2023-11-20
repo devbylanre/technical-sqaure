@@ -1,5 +1,5 @@
-import Heading from '../../../components/ui/typo/Heading';
-import Paragraph from '../../../components/ui/typo/Paragraph';
+import Heading from '../../../components/ui/Heading';
+import Paragraph from '../../../components/ui/Paragraph';
 import { RiFundsLine, RiShiningLine } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
 import { motion } from 'framer-motion';
@@ -39,15 +39,16 @@ const Start = (props: StartPropsType) => {
   const { value, setValue, switchToComponent } = props;
 
   const handleNext = () => {
-    if (!value) return null;
-
+    if (!value) return;
     switchToComponent('name');
   };
 
   return (
     <>
       <div>
-        <Heading className='text-2xl font-bold'>Create an account</Heading>
+        <Heading className='text-2xl font-bold'>
+          Sign up within 60 seconds
+        </Heading>
         <Paragraph className='mt-1'>
           Join Square today and become a professional creative. Create your
           community and connect with digital experts.
@@ -60,18 +61,16 @@ const Start = (props: StartPropsType) => {
           <div
             key={plan.name}
             className={twMerge(
-              'flex flex-col p-2 rounded-lg cursor-pointer hover:bg-zinc-50 gap-y-2 ring-1 ring-zinc-200 transition-all duration-200 ease-in-out',
+              'flex flex-col px-3 h-32 md:h-40 md:text-center md:items-center justify-center rounded-lg cursor-pointer gap-y-2 border border-zinc-200 shadow shadow-zinc-200/20 transition-all duration-200 ease-in-out',
               value === plan.name
-                ? 'ring-zinc-900 fill-zinc-900'
-                : 'fill-zinc-400'
+                ? 'border-zinc-900 fill-zinc-900'
+                : 'fill-zinc-400 hover:border-zinc-300'
             )}
             onClick={() => setValue('plan', plan.name)}
           >
             {plan.icon}
-            <Heading className='text-base font-semibold'>{plan.name}</Heading>
-            <Paragraph className='text-sm font-medium text-zinc-500'>
-              {plan.desc}
-            </Paragraph>
+            <Heading className='text-base font-medium'>{plan.name}</Heading>
+            <Paragraph className='text-sm text-zinc-600'>{plan.desc}</Paragraph>
           </div>
         ))}
       </div>

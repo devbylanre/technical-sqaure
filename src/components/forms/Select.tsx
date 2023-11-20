@@ -1,4 +1,4 @@
-import Paragraph from '../ui/typo/Paragraph';
+import Paragraph from '../ui/Paragraph';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 import { useField } from 'formik';

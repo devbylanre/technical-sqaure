@@ -1,4 +1,4 @@
-import Heading from '../../../components/ui/typo/Heading';
+import Heading from '../../../components/ui/Heading';
 import Logo from '../../../components/ui/Logo';
 import { SidebarGroup } from './SidebarGroup';
 import { RiCloseLine, RiMenu4Fill, RiUserForbidLine } from 'react-icons/ri';

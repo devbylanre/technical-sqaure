@@ -15,7 +15,7 @@ const Label = (props: LabelProps) => {
     <label
       htmlFor={name}
       className={twMerge(
-        'text-sm font-semibold leading-tight text-zinc-600',
+        'text-sm font-medium leading-tight text-zinc-500',
         className
       )}
     >

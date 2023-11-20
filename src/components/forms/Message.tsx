@@ -1,5 +1,5 @@
 import { useField } from 'formik';
-import Paragraph from '../ui/typo/Paragraph';
+import Paragraph from '../ui/Paragraph';
 import { twMerge } from 'tailwind-merge';
 
 interface MessageProps {

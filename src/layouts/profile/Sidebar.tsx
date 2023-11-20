@@ -1,4 +1,4 @@
-import Heading from '../../components/ui/typo/Heading';
+import Heading from '../../components/ui/Heading';
 import {
   RiSketching,
   RiDoorLockLine,
@@ -9,7 +9,7 @@ import {
   RiBarChart2Line,
   RiSettingsLine,
 } from 'react-icons/ri';
-import Paragraph from '../../components/ui/typo/Paragraph';
+import Paragraph from '../../components/ui/Paragraph';
 import MenuItems from './MenuItem';
 
 // item children type

@@ -1,6 +1,6 @@
 import { ChildrenType } from './Sidebar';
-import Heading from '../../components/ui/typo/Heading';
-import Paragraph from '../../components/ui/typo/Paragraph';
+import Heading from '../../components/ui/Heading';
+import Paragraph from '../../components/ui/Paragraph';
 
 //menu item props
 type MenuItemsProps = {
