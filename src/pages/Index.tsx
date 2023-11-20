@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Post } from '../components/templates/Post';
+import { PostCard } from '../components/templates/PostCard';
 
 const Home = () => {
   return (
@@ -17,7 +17,7 @@ const Home = () => {
       </Helmet>
 
       <div className='grid w-full grid-cols-12 px-3 md:px-8'>
-        <Post />
+        <PostCard />
       </div>
     </>
   );

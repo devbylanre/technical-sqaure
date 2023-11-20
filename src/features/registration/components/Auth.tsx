@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import FieldControl from '../../../components/forms/FieldControl';
 import Heading from '../../../components/ui/typo/Heading';
 import { RiLockLine, RiLockUnlockLine } from 'react-icons/ri';
 import Navigator from './Navigator';
+import Input from '../../../components/forms/Input';
+import { Field } from '../../../components/forms/Field';
 
 type AuthPropsTpe = {
   errors: {
@@ -57,27 +58,16 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsTpe) => {
         Account
       </Heading>
       <div className='flex flex-col gap-y-5'>
-        <FieldControl
-          control='input'
-          type='email'
-          name='email'
-          label='Email Address'
-          placeholder='E.g Johndoe@gmail.com'
-        />
-        <FieldControl
-          control='input'
-          type={passwordType}
+        <Field name='email'>
+          <Input name='email' />
+        </Field>
+        <Field
           name='password'
-          label='Password'
-          suffix={
-            <AuthPassword
-              type={passwordType}
-              setType={setPasswordType}
-            />
-          }
-          placeholder='Use a combination of letters and numbers'
-          message='Minimum of 8 characters containing at least one uppercase, lowercase, number, special characters, and no spaces'
-        />
+          // placeholder='Use a combination of letters and numbers'
+          // message='Minimum of 8 characters containing at least one uppercase, lowercase, number, special characters, and no spaces'
+        >
+          <Input name='password' />
+        </Field>
       </div>
 
       {/* button group for navigating through form component */}

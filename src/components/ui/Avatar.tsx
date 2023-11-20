@@ -26,7 +26,7 @@ export const Avatar = ({ src, fallback, alt, className }: AvatarProps) => {
   const onImageError = () => setImageError(true);
 
   return (
-    <div className={twMerge('w-9 h-9 rounded-full overflow-clip', className)}>
+    <div className={twMerge('w-9 rounded-full overflow-clip', className)}>
       {!imageError ? (
         <img
           src={src}

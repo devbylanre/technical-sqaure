@@ -1,6 +1,10 @@
-import FieldControl from '../../../components/forms/FieldControl';
+import { Field } from '../../../components/forms/Field';
+import Input from '../../../components/forms/Input';
 import Heading from '../../../components/ui/typo/Heading';
 import Navigator from './Navigator';
+import { Message } from '../../../components/forms/Message';
+import { FieldGroup } from '../../../components/forms/FieldGroup';
+import Label from '../../../components/forms/Label';
 
 // define the name form component props type
 type NamePropsType = {
@@ -31,18 +35,22 @@ const Name = ({ switchToComponent, errors, touched }: NamePropsType) => {
 
       {/* render first name and last name field */}
       <div className='flex flex-col gap-y-5'>
-        <FieldControl
-          control='input'
-          name='firstName'
-          label='First Name'
-          placeholder='Enter your first name'
-        />
-        <FieldControl
-          control='input'
-          name='lastName'
-          label='Last Name'
-          placeholder='Enter your last name'
-        />
+        {/* field name field group */}
+        <FieldGroup>
+          <Label name='firstName'>First Name</Label>
+          <Field name='firstName'>
+            <Input name='firstName' />
+          </Field>
+          <Message name='firstName' />
+        </FieldGroup>
+        {/* last name field group */}
+        <FieldGroup>
+          <Label name='lastName'>Last Name</Label>
+          <Field name='lastName'>
+            <Input name='lastName' />
+          </Field>
+          <Message name='lastName' />
+        </FieldGroup>
       </div>
 
       {/* render button used to navigate between form components */}

@@ -2,12 +2,6 @@ import Heading from '../../components/ui/typo/Heading';
 import Paragraph from '../../components/ui/typo/Paragraph';
 import { BadgesWithDismiss, BadgesWithIcon, BasicBadges } from './BadgeTheme';
 import DropdownTheme from './DropdownTheme';
-import {
-  BasicFormTheme,
-  HelperFormTheme,
-  PrefixFormTheme,
-  SuffixFormTheme,
-} from './FormTheme';
 import LightWrapper from './LightWrapper';
 
 const Theme = () => {
@@ -49,40 +43,6 @@ const Theme = () => {
         {/* renders the dropdown component */}
         <LightWrapper>
           <DropdownTheme />
-        </LightWrapper>
-
-        {/* renders the form component block */}
-        <LightWrapper className='grid grid-cols-2 gap-8 gap-y-5 col-span-full'>
-          <div>
-            <Heading className='font-semibold'>Form fields</Heading>
-            <Paragraph className='text-sm'>Hello world</Paragraph>
-          </div>
-
-          <div>
-            <Heading className='mb-2 text-sm font-semibold'>Basic form</Heading>
-            <BasicFormTheme />
-          </div>
-
-          <div>
-            <Heading className='mb-2 text-sm font-semibold'>
-              Form with suffix
-            </Heading>
-            <SuffixFormTheme />
-          </div>
-
-          <div>
-            <Heading className='mb-2 text-sm font-semibold'>
-              Form with prefix
-            </Heading>
-            <PrefixFormTheme />
-          </div>
-
-          <div>
-            <Heading className='mb-2 text-sm font-semibold'>
-              Form with helper message
-            </Heading>
-            <HelperFormTheme />
-          </div>
         </LightWrapper>
       </div>
     </div>

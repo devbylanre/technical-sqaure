@@ -1,7 +1,6 @@
 import { useField } from 'formik';
 import Label from '../Label';
 import ButtonList from './ButtonList';
-import Message from '../Message';
 
 // Define the properties for each option within the button group
 export type OptionProps = {
@@ -19,8 +18,8 @@ export type ButtonProps = {
 };
 
 const Button = (props: ButtonProps) => {
-  const { name, label, multiple, options, message } = props;
-  const [field, meta, helper] = useField(name);
+  const { name, label, multiple, options } = props;
+  const [field, {}, helper] = useField(name);
 
   // Set the value of the button group based on selection
   const setValue = (value: string | number) => {
@@ -61,13 +60,6 @@ const Button = (props: ButtonProps) => {
         options={options}
         valueExists={valueExists}
         setValue={setValue}
-      />
-
-      {/* Display additional helper information */}
-      <Message
-        touched={meta.touched}
-        error={meta.error}
-        message={message}
       />
     </div>
   );

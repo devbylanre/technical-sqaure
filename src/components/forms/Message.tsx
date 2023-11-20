@@ -1,27 +1,54 @@
+import { useField } from 'formik';
 import Paragraph from '../ui/typo/Paragraph';
+import { twMerge } from 'tailwind-merge';
 
 interface MessageProps {
-  touched: boolean;
-  error: any;
-  message?: string;
+  name: string;
+  children?: React.ReactNode;
 }
 
-const Message = (props: MessageProps) => {
-  const { touched, error, message } = props;
+export const Message = (props: MessageProps) => {
+  const { name, children } = props;
+
+  const [{}, meta, {}] = useField(name);
 
   return (
     <>
-      {touched && error ? (
-        <Paragraph className='text-red-600 first-letter:uppercase sm:text-sm'>
-          {error}
-        </Paragraph>
-      ) : message ? (
-        <Paragraph className='text-sm first-letter:uppercase text-zinc-600'>
-          {message}
-        </Paragraph>
-      ) : null}
+      {meta.touched && meta.error ? (
+        <Error>{meta.error}</Error>
+      ) : (
+        <Helper>{children}</Helper>
+      )}
     </>
   );
 };
 
-export default Message;
+type ErrorProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export const Error = ({ children, className }: ErrorProps) => {
+  if (!children) return null;
+
+  return (
+    <Paragraph className={twMerge('text-red-600 text-sm', className)}>
+      {' '}
+      {children}
+    </Paragraph>
+  );
+};
+
+type HelperProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export const Helper = ({ children, className }: HelperProps) => {
+  if (!children) return null;
+  return (
+    <Paragraph className={twMerge('text-zinc-600 text-sm', className)}>
+      {children}
+    </Paragraph>
+  );
+};

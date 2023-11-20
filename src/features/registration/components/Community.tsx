@@ -1,4 +1,8 @@
-import FieldControl from '../../../components/forms/FieldControl';
+import { Field } from '../../../components/forms/Field';
+import { FieldGroup } from '../../../components/forms/FieldGroup';
+import Input from '../../../components/forms/Input';
+import Label from '../../../components/forms/Label';
+import { Message } from '../../../components/forms/Message';
 import Heading from '../../../components/ui/typo/Heading';
 import Navigator from './Navigator';
 
@@ -8,18 +12,16 @@ type CommunityPropsType = {
   touched: () => void;
 };
 
-const Community = ({
-  error,
-  touched,
-  switchToComponent,
-}: CommunityPropsType) => {
+const Community = (props: CommunityPropsType) => {
+  const { error, touched, switchToComponent } = props;
+
   const handleNext = () => {
+    // check if field(s) has an error message
     if (error) {
-      touched();
+      touched(); //set field(s) to touched
       return;
     }
-
-    switchToComponent('description');
+    switchToComponent('description'); //switch the form component
   };
 
   return (
@@ -28,12 +30,13 @@ const Community = ({
         What would you call your <br />
         Community?
       </Heading>
-      <FieldControl
-        control='input'
-        name='community'
-        label='Community Name'
-        placeholder='E.g John community, Digital LaPlace, The spice of UI design'
-      />
+      <FieldGroup>
+        <Label name='community'>Community</Label>
+        <Field name='community'>
+          <Input name='community' />
+        </Field>
+        <Message name='community' />
+      </FieldGroup>
 
       <Navigator
         prev='Names'

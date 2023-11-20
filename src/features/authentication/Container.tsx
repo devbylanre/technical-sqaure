@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { Sidebar } from './components/Sidebar';
-import { AuthForm } from './components/AuthForm';
+import { Auth } from './components/Auth';
 
 type InitialValuesProps = {
   auth: string;
@@ -20,17 +20,19 @@ const validationSchema = Yup.object().shape({
 
 const AuthContainer = () => {
   return (
-    <div className='grid bg-zinc-100 md:grid-cols-2'>
+    <div className='grid bg-zinc-100 md:grid-cols-12'>
       <Sidebar />
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={() => {}}
-      >
-        <Form className='flex items-center justify-center min-h-screen'>
-          <AuthForm />
-        </Form>
-      </Formik>
+      <div className='col-span-6 px-3 py-5 bg-white lg:col-span-4 md:px-8 lg:px-12 md:py-0'>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={() => {}}
+        >
+          <Form>
+            <Auth />
+          </Form>
+        </Formik>
+      </div>
     </div>
   );
 };

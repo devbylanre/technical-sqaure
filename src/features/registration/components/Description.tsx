@@ -1,5 +1,9 @@
+import { Field } from '../../../components/forms/Field';
+import { FieldGroup } from '../../../components/forms/FieldGroup';
+import Label from '../../../components/forms/Label';
+import { Message } from '../../../components/forms/Message';
+import { Textarea } from '../../../components/forms/Textarea';
 import Heading from '../../../components/ui/typo/Heading';
-import FieldControl from '../../../components/forms/FieldControl';
 import Navigator from './Navigator';
 
 type DescriptionPropsType = {
@@ -25,13 +29,19 @@ const Description = (props: DescriptionPropsType) => {
         What would you do as a <br />
         Community?
       </Heading>
-      <FieldControl
-        control='textarea'
-        name='description'
-        label='Community Description'
-        limit={256}
-        placeholder='E.g A hub to learn all about UI, UX and Interaction design'
-      />
+      <FieldGroup>
+        <Label name='description'>Description</Label>
+        <Field name='description'>
+          <Textarea
+            name='description'
+            limit={250}
+          />
+        </Field>
+        <Message name='description'>
+          Describe what your community does e.g A hub for learning about
+          programming algorithms
+        </Message>
+      </FieldGroup>
 
       <Navigator
         prev='Community'

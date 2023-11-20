@@ -51,17 +51,14 @@ const validationSchema = Yup.object().shape({
     .min(8, 'Password must be at least 8 characters'),
 });
 
-const Container = () => {
+export const Container = () => {
   const { currentComponent, switchToComponent } = useComponentSwitch();
 
   const HandleRenderComponent = (
     component: string | undefined,
     formik: FormikProps<InitialValuesType>
   ) => {
-    //console.log(formik);
-    /*
-    switch between form component to render based on the parameter component value
-    */
+    // switch between form component to render based on the parameter component value
     switch (component) {
       case 'start':
         return (
@@ -149,5 +146,3 @@ const Container = () => {
     </Formik>
   );
 };
-
-export default Container;
