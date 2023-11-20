@@ -1,7 +1,13 @@
-import { ButtonList } from '../../../components/forms/ButtonList';
+import { twMerge } from 'tailwind-merge';
+import {
+  ButtonGroup,
+  ButtonItem,
+  useButtonGroup,
+} from '../../../components/forms/ButtonGroup';
 import { FieldGroup } from '../../../components/forms/FieldGroup';
 import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
+import Button from '../../../components/ui/Button';
 import Heading from '../../../components/ui/typo/Heading';
 import Navigator from './Navigator';
 
@@ -49,6 +55,8 @@ type InterestPropsType = {
 };
 
 const Interest = ({ error, touched, switchToComponent }: InterestPropsType) => {
+  const { valueExists, setValue } = useButtonGroup('interest', true);
+
   const handleNext = () => {
     if (error) {
       touched();
@@ -66,12 +74,26 @@ const Interest = ({ error, touched, switchToComponent }: InterestPropsType) => {
 
       <FieldGroup>
         <Label name='interest'>Select your interests</Label>
-        <ButtonList
-          name='interest'
-          options={options}
-          multiple
-        />
-        <Message name='interest'>Select up to five interest</Message>
+        <ButtonGroup>
+          {options.map((option: OptionType, i: number) => (
+            <ButtonItem key={i}>
+              <Button
+                type='button'
+                variant='outline'
+                size='sm'
+                className={twMerge(
+                  'capitalize text-zinc-600 font-normal',
+                  valueExists(option.value) &&
+                    'font-bold text-zinc-900 border-zinc-900'
+                )}
+                onClick={() => setValue(option.value)}
+              >
+                {option.title}
+              </Button>
+            </ButtonItem>
+          ))}
+        </ButtonGroup>
+        <Message name='interest'>Select at least five interest</Message>
       </FieldGroup>
 
       <Navigator
