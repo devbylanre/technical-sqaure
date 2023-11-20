@@ -32,7 +32,12 @@ export const Error = ({ children, className }: ErrorProps) => {
   if (!children) return null;
 
   return (
-    <Paragraph className={twMerge('text-red-600 text-sm', className)}>
+    <Paragraph
+      className={twMerge(
+        'text-red-600 first-letter:uppercase text-sm',
+        className
+      )}
+    >
       {' '}
       {children}
     </Paragraph>
@@ -47,7 +52,12 @@ type HelperProps = {
 export const Helper = ({ children, className }: HelperProps) => {
   if (!children) return null;
   return (
-    <Paragraph className={twMerge('text-zinc-600 text-sm', className)}>
+    <Paragraph
+      className={twMerge(
+        'text-zinc-600 first-letter:uppercase text-sm',
+        className
+      )}
+    >
       {children}
     </Paragraph>
   );
