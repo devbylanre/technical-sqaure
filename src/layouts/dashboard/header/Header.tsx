@@ -35,8 +35,9 @@ const Header = () => {
           <Avatar
             src='/assets/images/user.png'
             alt='user'
-            fallback={<AvatarFallback>MN</AvatarFallback>}
-          />
+          >
+            <AvatarFallback>MN</AvatarFallback>
+          </Avatar>
           <AnimatePresence>
             {!showDropdown ? (
               <RiMenu4Line

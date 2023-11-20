@@ -13,7 +13,7 @@ export const Field = (props: FieldProps) => {
   return (
     <div
       className={twMerge(
-        'border border-zinc-200 shadow-sm outline-none rounded transition-all duration-300 ease-in-out',
+        'border border-zinc-200 shadow shadow-zinc-200/20 outline-none rounded transition-all duration-300 ease-in-out w-full',
         meta.touched && !meta.error
           ? 'border-zinc-900'
           : meta.touched && meta.error && 'border-red-600 text-red-700',

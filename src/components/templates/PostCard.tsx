@@ -77,8 +77,9 @@ const PostCardAuthor = () => {
         className='w-7'
         src='/assets/images/user.png'
         alt='user'
-        fallback={<AvatarFallback>MN</AvatarFallback>}
-      />
+      >
+        <AvatarFallback>MN</AvatarFallback>
+      </Avatar>
       <Heading className='text-sm font-bold capitalize'>Maria Singh</Heading>
     </div>
   );

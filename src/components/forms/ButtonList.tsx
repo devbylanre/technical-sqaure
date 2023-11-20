@@ -50,6 +50,7 @@ export const ButtonList = (props: ButtonProps) => {
             <li key={i}>
               <Button
                 size='sm'
+                type='button'
                 variant='outline'
                 className={twMerge(
                   'capitalize text-zinc-600 font-normal h-7',

@@ -1,26 +1,27 @@
 import { useField } from 'formik';
 import { RiCheckFill } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
-import Label from './Label';
 
 // component props types
 export type CheckboxProps = {
   name: string;
+  className?: string;
 };
 
-const Checkbox = ({ name }: CheckboxProps) => {
-  const [field, meta, helper] = useField(name);
+const Checkbox = ({ name, className }: CheckboxProps) => {
+  const [field, {}, helper] = useField(name);
 
   return (
     <div
       className={twMerge(
-        'flex items-center justify-center w-4 h-4 rounded cursor-pointer ring-1 ring-zinc-300 transition-all duration-300',
-        field.value ? 'bg-zinc-300' : ''
+        'flex items-center justify-center w-4 h-4 rounded-full cursor-pointer border border-zinc-200 shadow-sm transition-all duration-300 p-[1px]',
+        field.value && 'bg-green-500 border-green-500',
+        className
       )}
       onClick={() => helper.setValue(!field.value)}
     >
       {/* renders icon when field value is true and null when it's opposite */}
-      {field.value ? <RiCheckFill /> : null}
+      {field.value ? <RiCheckFill className='fill-white' /> : null}
     </div>
   );
 };

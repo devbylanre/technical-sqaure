@@ -1,15 +1,16 @@
 import { twMerge } from 'tailwind-merge';
 import { Field, useField } from 'formik';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, HTMLInputTypeAttribute } from 'react';
 
 type inputFieldProps = {
   name: string;
   className?: string;
   disabled?: boolean;
+  type?: HTMLInputTypeAttribute;
 } & HTMLAttributes<HTMLInputElement>;
 
 const Input = (props: inputFieldProps) => {
-  const { name, className, disabled, ...rest } = props;
+  const { name, type, className, disabled, ...rest } = props;
 
   const [{}, {}, helper] = useField(name);
 
@@ -24,11 +25,12 @@ const Input = (props: inputFieldProps) => {
         disabled && 'cursor-not-allowed',
         className
       )}
-      {...rest}
+      type={type}
       onFocus={onFocus}
       onBlur={onBlur}
       autoComplete={name}
       disabled={disabled}
+      {...rest}
     />
   );
 };

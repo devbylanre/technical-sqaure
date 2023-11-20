@@ -10,7 +10,7 @@ import Auth from './components/Auth';
 import Success from './components/Success';
 import useComponentSwitch from './hooks/useComponentSwitch';
 
-type InitialValuesType = {
+type InitialValuesProps = {
   plan: string;
   firstName: string;
   lastName: string;
@@ -22,7 +22,7 @@ type InitialValuesType = {
   gender: string;
 };
 
-const initialValues: InitialValuesType = {
+const initialValues: InitialValuesProps = {
   plan: '',
   firstName: '',
   lastName: '',
@@ -56,7 +56,7 @@ export const Container = () => {
 
   const HandleRenderComponent = (
     component: string | undefined,
-    formik: FormikProps<InitialValuesType>
+    formik: FormikProps<InitialValuesProps>
   ) => {
     // switch between form component to render based on the parameter component value
     switch (component) {

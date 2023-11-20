@@ -78,8 +78,9 @@ const HeaderDropdownAvatar = () => {
       <Avatar
         src='/assets/images/user.png'
         alt='User'
-        fallback={<AvatarFallback>MS</AvatarFallback>}
-      />
+      >
+        <AvatarFallback>MS</AvatarFallback>
+      </Avatar>
       <div>
         <Heading className='text-sm font-semibold capitalize leading-tight'>
           maria singh

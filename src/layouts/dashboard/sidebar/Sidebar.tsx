@@ -34,8 +34,9 @@ const SidebarAvatar = () => {
       <Avatar
         src='/assets/images/user.png'
         alt='user'
-        fallback={<AvatarFallback>MN</AvatarFallback>}
-      />
+      >
+        <AvatarFallback>MN</AvatarFallback>
+      </Avatar>
       <Heading className='flex-1 text-sm font-semibold'>Maria Singh</Heading>
       {
         <AnimatePresence>

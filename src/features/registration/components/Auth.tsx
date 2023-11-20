@@ -4,6 +4,9 @@ import { RiLockLine, RiLockUnlockLine } from 'react-icons/ri';
 import Navigator from './Navigator';
 import Input from '../../../components/forms/Input';
 import { Field } from '../../../components/forms/Field';
+import { FieldGroup } from '../../../components/forms/FieldGroup';
+import Label from '../../../components/forms/Label';
+import { Message } from '../../../components/forms/Message';
 
 type AuthPropsTpe = {
   errors: {
@@ -58,16 +61,41 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsTpe) => {
         Account
       </Heading>
       <div className='flex flex-col gap-y-5'>
-        <Field name='email'>
-          <Input name='email' />
-        </Field>
-        <Field
-          name='password'
-          // placeholder='Use a combination of letters and numbers'
-          // message='Minimum of 8 characters containing at least one uppercase, lowercase, number, special characters, and no spaces'
-        >
-          <Input name='password' />
-        </Field>
+        {/* email address field group */}
+        <FieldGroup>
+          <Label name='email'>Email Address</Label>
+          <Field name='email'>
+            <Input
+              name='email'
+              placeholder='E.g team@sokket.com'
+            />
+          </Field>
+          <Message name='email' />
+        </FieldGroup>
+
+        {/* password field group */}
+        <FieldGroup>
+          <Label name='password'>Pass Code or Authentication</Label>
+          <Field
+            name='password'
+            className='inline-flex items-center pr-2'
+          >
+            <Input
+              name='password'
+              type={passwordType}
+              placeholder='Usually a combination of letters and numbers'
+            />
+            {passwordType === 'text' ? (
+              <RiLockLine onClick={() => setPasswordType('password')} />
+            ) : (
+              <RiLockUnlockLine onClick={() => setPasswordType('text')} />
+            )}
+          </Field>
+          <Message name='password'>
+            Minimum of 8 characters containing at least one uppercase,
+            lowercase, number, special characters, and no spaces
+          </Message>
+        </FieldGroup>
       </div>
 
       {/* button group for navigating through form component */}

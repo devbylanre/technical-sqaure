@@ -17,14 +17,14 @@ const Toggle = ({ name }: ToggleProps) => {
       {/* render the field block */}
       <div
         className={twMerge(
-          'w-10 rounded-full border border-zinc-200 flex items-center bg-white p-0.5',
+          'w-9 rounded-full border border-zinc-200 flex items-center bg-white p-0.5',
           field.value === true && 'bg-green-500 border-green-500'
         )}
       >
         <div
           className={twMerge(
             'w-4 h-4 rounded-full transition-all duration-300 cursor-pointer bg-zinc-300',
-            field.value === true && ' translate-x-[18px] shadow-xl bg-white'
+            field.value === true && ' translate-x-[14px] shadow-xl bg-white'
           )}
           onClick={handleToggleBar}
         ></div>
