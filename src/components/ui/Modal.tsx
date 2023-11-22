@@ -12,7 +12,7 @@ export const Modal = ({ children, className, isVisible }: ModalProps) => {
   return (
     <div
       className={twMerge(
-        'fixed top-0 left-0 bg-zinc-900 w-full h-full z-50 bg-opacity-10 items-center justify-center flex',
+        'fixed top-0 left-0 bg-zinc-900 backdrop-blur w-full h-full z-50 bg-opacity-20 items-center justify-center flex',
         className
       )}
     >

@@ -9,7 +9,7 @@ export type CheckboxProps = {
 };
 
 const Checkbox = ({ name, className }: CheckboxProps) => {
-  const [field, {}, helper] = useField(name);
+  const [field, , helper] = useField(name);
 
   const onChecked = () => {
     helper.setTouched(true);

@@ -54,7 +54,7 @@ export const SelectGroup = ({ children, className }: SelectGroupProps) => {
   return (
     <div
       className={twMerge(
-        'shadow rounded-lg w-full absolute left-0 top-10 border border-zinc-200 flex flex-col bg-white shadow-zinc-200/20',
+        'shadow rounded-lg w-full max-h-64 overflow-y-scroll absolute left-0 top-10 border border-zinc-200 flex flex-col bg-white shadow-zinc-200/20 z-10',
         className
       )}
     >
@@ -83,7 +83,7 @@ export const SelectItem = (props: SelectItemProps) => {
 };
 
 export const useSelect = (name: string, multiple?: boolean) => {
-  const [field, {}, helper] = useField(name);
+  const [field, , helper] = useField(name);
 
   const selectValue = (value: string | number) => {
     if (multiple) {

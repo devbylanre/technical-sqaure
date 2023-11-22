@@ -1,6 +1,7 @@
 import { Field } from '../../../components/forms/Field';
 import { FieldGroup } from '../../../components/forms/FieldGroup';
 import Input from '../../../components/forms/Input';
+import { Textarea } from '../../../components/forms/Textarea';
 import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
 import Heading from '../../../components/ui/Heading';
@@ -8,16 +9,19 @@ import Navigator from './Navigator';
 
 type CommunityPropsType = {
   switchToComponent: (e: any) => void;
-  error?: string;
+  errors: {
+    communityName?: string;
+    communityDescription?: string;
+  };
   touched: () => void;
 };
 
 const Community = (props: CommunityPropsType) => {
-  const { error, touched, switchToComponent } = props;
+  const { errors, touched, switchToComponent } = props;
 
   const handleNext = () => {
     // check if field(s) has an error message
-    if (error) {
+    if (errors.communityName || errors.communityDescription) {
       touched(); //set field(s) to touched
       return;
     }
@@ -36,6 +40,20 @@ const Community = (props: CommunityPropsType) => {
           <Input name='community' />
         </Field>
         <Message name='community' />
+      </FieldGroup>
+
+      <FieldGroup>
+        <Label name='description'>Description</Label>
+        <Field name='description'>
+          <Textarea
+            name='description'
+            limit={250}
+          />
+        </Field>
+        <Message name='description'>
+          Describe what your community does e.g A hub for learning about
+          programming algorithms
+        </Message>
       </FieldGroup>
 
       <Navigator

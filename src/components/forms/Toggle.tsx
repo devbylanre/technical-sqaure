@@ -7,7 +7,7 @@ export type ToggleProps = {
 };
 
 const Toggle = ({ name }: ToggleProps) => {
-  const [field, {}, helper] = useField(name);
+  const [field, , helper] = useField(name);
 
   //conditional set the value of field value to it's negative value
   const handleToggleBar = () => helper.setValue(!field.value);

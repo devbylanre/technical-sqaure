@@ -95,7 +95,7 @@ const HeaderDropdownAvatar = () => {
 
 const HeaderDropdownItem = ({ option }: any) => {
   return (
-    <div className='inline-flex items-center p-1.5 capitalize hover:bg-zinc-100 rounded-md cursor-pointer gap-x-2 transition-all duration-200 ease-in-out'>
+    <div className='inline-flex items-center p-2 capitalize hover:bg-zinc-100 rounded-md cursor-pointer gap-x-2 transition-all duration-200 ease-in-out'>
       {option.icon}
       <Paragraph className='text-sm font-medium'>{option.title}</Paragraph>
     </div>

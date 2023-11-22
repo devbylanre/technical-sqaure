@@ -26,7 +26,10 @@ const Header = () => {
           className={iconClassName}
           onClick={() => setShowSearchModal(true)}
         />
-        <HeaderSearchModal isVisible={showSearchModal} />
+        <HeaderSearchModal
+          isVisible={showSearchModal}
+          onClose={() => setShowSearchModal(false)}
+        />
       </div>
 
       <div className='relative'>

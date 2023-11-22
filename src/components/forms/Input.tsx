@@ -12,7 +12,7 @@ type inputFieldProps = {
 const Input = (props: inputFieldProps) => {
   const { name, type, className, disabled, ...rest } = props;
 
-  const [{}, {}, helper] = useField(name);
+  const [, , helper] = useField(name);
 
   const onFocus = () => helper.setTouched(true);
   const onBlur = () => helper.setTouched(false);

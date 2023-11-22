@@ -9,7 +9,7 @@ type FieldProps = {
 
 export const Field = (props: FieldProps) => {
   const { name, className, children, ...rest } = props;
-  const [{}, meta, {}] = useField(name);
+  const [, meta] = useField(name);
   return (
     <div
       className={twMerge(

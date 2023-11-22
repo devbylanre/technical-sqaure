@@ -40,7 +40,7 @@ export const ButtonItem = (props: ButtonItemProps) => {
 
 // hook for handling button items
 export const useButtonGroup = (name: string, multiple?: boolean) => {
-  const [field, {}, helper] = useField(name);
+  const [field, , helper] = useField(name);
 
   const setValue = (value: string | number) => {
     helper.setTouched(true);

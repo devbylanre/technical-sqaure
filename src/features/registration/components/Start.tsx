@@ -46,7 +46,7 @@ const Start = (props: StartPropsType) => {
   return (
     <>
       <div>
-        <Heading className='text-2xl font-bold'>
+        <Heading className='sm:text-2xl font-bold'>
           Sign up within 60 seconds
         </Heading>
         <Paragraph className='mt-1'>

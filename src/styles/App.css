@@ -6,3 +6,27 @@
   font-family: 'Satoshi';
   src: url('../assets/fonts/satoshi/Variable/Satoshi-Variable.ttf');
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  width: 8px;
+  border-radius: 12px;
+  transition: 0.3s all ease-in-out;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+  height: 20px;
+}
