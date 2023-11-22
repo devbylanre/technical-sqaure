@@ -30,12 +30,13 @@ const buttons: { provider: string; icon: React.ReactNode }[] = [
 
 export const SocialButtons = () => {
   return (
-    <div className='flex md:flex-row gap-2 flex-wrap '>
+    <div className='grid grid-cols-2 gap-1'>
       {buttons.map((button, i: number) => (
         <Button
           key={i}
           type='button'
           variant='soft'
+          className='col-span-1'
         >
           <span>{button.icon}</span>
           {button.provider}

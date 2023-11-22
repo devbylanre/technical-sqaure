@@ -51,14 +51,14 @@ export const HeaderDropdown = ({ showDropdown }: UserDropdownProps) => {
     <AnimatePresence>
       {showDropdown && (
         <Dropdown
-          className='flex flex-col w-72'
-          initial={{ x: -120 }}
-          animate={{ y: [0, 12], opacity: [0, 1] }}
+          className='flex flex-col w-64'
+          initial={{ x: -88, y: 12 }}
+          animate={{ scale: [0.9, 1], opacity: [0, 1] }}
           exit={{ y: [12, 24], opacity: [1, 0] }}
           isVisible={showDropdown}
         >
           <HeaderDropdownAvatar />
-          <div className='flex flex-col p-1.5'>
+          <div className='flex flex-col p-0.5'>
             {options.map((option, i: number) => (
               <HeaderDropdownItem
                 key={i}
@@ -82,7 +82,7 @@ const HeaderDropdownAvatar = () => {
         <AvatarFallback>MS</AvatarFallback>
       </Avatar>
       <div>
-        <Heading className='text-sm font-semibold capitalize leading-tight'>
+        <Heading className='text-sm font-bold capitalize leading-tight'>
           maria singh
         </Heading>
         <Paragraph className='text-sm leading-tight'>
@@ -95,7 +95,7 @@ const HeaderDropdownAvatar = () => {
 
 const HeaderDropdownItem = ({ option }: any) => {
   return (
-    <div className='inline-flex items-center p-2 capitalize hover:bg-zinc-100 rounded-md cursor-pointer gap-x-2 transition-all duration-200 ease-in-out'>
+    <div className='inline-flex items-center px-2 py-1.5 capitalize hover:bg-zinc-100 rounded-md cursor-pointer gap-x-2 transition-all duration-200 ease-in-out'>
       {option.icon}
       <Paragraph className='text-sm font-medium'>{option.title}</Paragraph>
     </div>

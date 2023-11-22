@@ -18,30 +18,31 @@ export const Select = (props: SelectProps) => {
   const onTouched = () => helper.setTouched(!meta.touched);
 
   return (
-    <div
-      className='inline-flex items-center h-9 px-2 cursor-pointer justify-between w-full relative'
-      onClick={onTouched}
-      {...rest}
-    >
-      <Paragraph
-        className={twMerge(
-          'text-sm font-semibold text-zinc-900 first-letter:uppercase',
-          !field.value && 'text-zinc-600 font-normal'
-        )}
+    <>
+      <div
+        className='inline-flex items-center h-9 px-2 cursor-pointer justify-between w-full'
+        onClick={onTouched}
+        {...rest}
       >
-        {field.value || placeholder}
-      </Paragraph>
-      <motion.span animate={meta.touched ? { rotate: 180 } : { rotate: 0 }}>
-        <RiArrowDownSLine
+        <Paragraph
           className={twMerge(
-            'w-5 h-5 fill-zinc-400',
-            meta.touched && 'fill-zinc-900'
+            'text-sm font-semibold text-zinc-900 first-letter:uppercase',
+            !field.value && 'text-zinc-600 font-normal'
           )}
-        />
-      </motion.span>
-
-      {meta.touched && children}
-    </div>
+        >
+          {field.value || placeholder}
+        </Paragraph>
+        <motion.span animate={meta.touched ? { rotate: 180 } : { rotate: 0 }}>
+          <RiArrowDownSLine
+            className={twMerge(
+              'w-5 h-5 fill-zinc-400',
+              meta.touched && 'fill-zinc-900'
+            )}
+          />
+        </motion.span>
+      </div>
+      <div className='relative'>{meta.touched && children}</div>
+    </>
   );
 };
 
@@ -54,7 +55,7 @@ export const SelectGroup = ({ children, className }: SelectGroupProps) => {
   return (
     <div
       className={twMerge(
-        'shadow rounded-lg w-full max-h-64 overflow-y-scroll absolute left-0 top-10 border border-zinc-200 flex flex-col bg-white shadow-zinc-200/20 z-10',
+        'shadow rounded-lg w-full max-h-64 overflow-y-scroll absolute left-0 top-1 border border-zinc-200 flex flex-col bg-white shadow-zinc-200/20 z-10',
         className
       )}
     >
@@ -74,7 +75,7 @@ export const SelectItem = (props: SelectItemProps) => {
 
   return (
     <div
-      className={twMerge('py-1 px-2', className)}
+      className={twMerge('py-1 px-2 cursor-pointer', className)}
       onClick={onSelect}
     >
       {children}

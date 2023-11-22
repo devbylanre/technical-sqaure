@@ -2,22 +2,23 @@ import { useField } from 'formik';
 import Paragraph from '../ui/Paragraph';
 import { twMerge } from 'tailwind-merge';
 
-interface MessageProps {
+type MessageProps = {
   name: string;
   children?: React.ReactNode;
-}
+  className?: string;
+};
 
 export const Message = (props: MessageProps) => {
-  const { name, children } = props;
+  const { name, className, children } = props;
 
-  const [{}, meta, {}] = useField(name);
+  const [, meta] = useField(name);
 
   return (
     <>
       {meta.touched && meta.error ? (
-        <Error>{meta.error}</Error>
+        <Error className={className}>{meta.error}</Error>
       ) : (
-        <Helper>{children}</Helper>
+        <Helper className={className}>{children}</Helper>
       )}
     </>
   );

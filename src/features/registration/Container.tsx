@@ -22,6 +22,7 @@ type InitialValuesProps = {
   password: string;
   accept: boolean;
   profession: '';
+  addProfession: '';
   about: '';
 };
 
@@ -33,6 +34,7 @@ const initialValues: InitialValuesProps = {
   communityDescription: '',
   interest: [],
   profession: '',
+  addProfession: '',
   about: '',
   email: '',
   password: '',

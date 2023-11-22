@@ -86,14 +86,11 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsType) => {
           </Message>
         </FieldGroup>
 
-        <FieldGroup>
-          <div className='inline-flex gap-x-2 items-center'>
-            <Checkbox name='accept' />
-            <Paragraph className='text-sm'>
-              By registering you agree to our Terms and Conditions
-            </Paragraph>
-          </div>
-          <Message name='accept' />
+        <FieldGroup className='flex flex-row gap-x-2 items-center'>
+          <Checkbox name='accept' />
+          <Message name='accept'>
+            By registering you agree to our Terms and Conditions
+          </Message>
         </FieldGroup>
       </div>
 

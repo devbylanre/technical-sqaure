@@ -85,13 +85,16 @@ export const Sidebar = () => {
                 By Technical
               </Paragraph>
               <Paragraph className='mt-6 w-full'>
-                Connecting digital creatives willing to share their knowledge
-                together
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                delectus quasi...
               </Paragraph>
             </div>
 
             <Link to='/signup'>
-              <Button className='rounded-full'>
+              <Button
+                type='button'
+                className='rounded-full px-4'
+              >
                 <RiShareBoxLine className='w-4 h-4' />
                 <span>Get Started</span>
               </Button>
@@ -125,7 +128,9 @@ export const Sidebar = () => {
               <Heading className='text-2xl font-bold'>
                 Connect with Digital experts
               </Heading>
-              <Paragraph>Build your community</Paragraph>
+              <Paragraph>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              </Paragraph>
             </div>
           </div>
         </div>

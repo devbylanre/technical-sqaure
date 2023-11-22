@@ -74,7 +74,7 @@ const PostCardAuthor = () => {
   return (
     <div className='inline-flex items-center gap-x-2'>
       <Avatar
-        className='w-7'
+        className='w-7 h-7'
         src='/assets/images/user.png'
         alt='user'
       >
@@ -87,29 +87,19 @@ const PostCardAuthor = () => {
 
 const PostCardFooter = () => {
   return (
-    <div className='inline-flex items-center justify-between'>
+    <div className='inline-flex justify-between items-center'>
       <PostCardAuthor />
 
-      <div className='inline-flex gap-x-1'>
-        <Button
-          size='xs'
-          type='button'
-          variant='outline'
-          className='rounded-full'
-        >
-          <RiBookmarkLine className='w-3.5 h-3.5' />
-          <span>5</span>
-        </Button>
+      <div className='inline-flex'>
+        <div className='inline-flex gap-x-1 items-center px-2 border-r border-r-zinc-200'>
+          <RiBookmarkLine className='w-3.5' />
+          <Paragraph className='font-bold text-xs'>12</Paragraph>
+        </div>
 
-        <Button
-          size='xs'
-          type='button'
-          variant='outline'
-          className='rounded-full'
-        >
-          <RiAttachment2 className='w-3.5 h-3.5' />
-          <span>2</span>
-        </Button>
+        <div className='inline-flex gap-x-1 items-center px-2'>
+          <RiStarLine className='w-3.5' />
+          <Paragraph className='font-bold text-xs'>4+</Paragraph>
+        </div>
       </div>
     </div>
   );

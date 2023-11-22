@@ -21,7 +21,7 @@ export type ButtonProps = {
 
 const buttonVariants = {
   initial:
-    'inline-flex gap-x-1 px-4 h-8 items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out rounded-lg leading-tight',
+    'inline-flex gap-x-1 px-2 h-8 items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out rounded-lg leading-tight',
 
   variants: {
     default: 'bg-zinc-900 text-white hover:bg-zinc-700',
@@ -37,9 +37,9 @@ const buttonVariants = {
   sizes: {
     xs: 'text-xs h-6',
     sm: 'h-8',
-    md: 'h-9',
-    lg: 'h-10',
-    xl: 'h-12',
+    md: 'h-10',
+    lg: 'h-12',
+    xl: 'h-14',
     icon: 'w-8 h-8',
   },
 };

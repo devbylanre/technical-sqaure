@@ -12,7 +12,7 @@ export const Auth = () => {
   return (
     <div className='flex flex-col h-full min-h-screen md:justify-center gap-y-8'>
       <div>
-        <Heading className='sm:text-2xl font-bold'>
+        <Heading className='text-2xl font-bold'>
           Sign in to your Account
         </Heading>
         <Paragraph className='mt-1'>
@@ -23,7 +23,10 @@ export const Auth = () => {
         <FieldGroup>
           <Label name='email'>Email address</Label>
           <Field name='email'>
-            <Input name='email' />
+            <Input
+              name='email'
+              placeholder='Provide your account email address'
+            />
           </Field>
           <Message name='email' />
         </FieldGroup>
@@ -31,7 +34,10 @@ export const Auth = () => {
         <FieldGroup>
           <Label name='password'>Pass Code</Label>
           <Field name='password'>
-            <Input name='password' />
+            <Input
+              name='password'
+              placeholder='Provide your pass code'
+            />
           </Field>
           <Message name='password' />
         </FieldGroup>
@@ -44,6 +50,21 @@ export const Auth = () => {
           Sign in with other account
         </Heading>
         <SocialButtons />
+      </div>
+
+      <div>
+        <Paragraph className='text-xs font-medium'>
+          <span>
+            To recover your account in case you've lost password, click on the
+            forgot password button to verify account ownership.
+          </span>
+          <Button
+            size='xs'
+            variant='ghost'
+          >
+            Forgot Password
+          </Button>
+        </Paragraph>
       </div>
     </div>
   );

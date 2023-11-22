@@ -99,17 +99,17 @@ const HeaderSearchModalFilter = () => {
   return (
     <div className='flex flex-col p-4 gap-y-2 border-b border-b-zinc-200'>
       <Paragraph className='text-sm'>I'm looking for:</Paragraph>
-      <div className='inline-flex gap-x-3'>
+      <div className='inline-flex gap-x-2'>
         {filters.map((filter: FilterProps, i: number) => (
-          <Badge
+          <Button
             key={i}
             variant='outline'
-            isVisible
+            size='xs'
             className='h-7'
           >
             {filter.icon}
             {filter.title}
-          </Badge>
+          </Button>
         ))}
       </div>
     </div>

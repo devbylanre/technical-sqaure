@@ -13,6 +13,9 @@ import { twMerge } from 'tailwind-merge';
 import { Textarea } from '../../../components/forms/Textarea';
 import Paragraph from '../../../components/ui/Paragraph';
 import Button from '../../../components/ui/Button';
+import Input from '../../../components/forms/Input';
+import { RiSearchLine } from 'react-icons/ri';
+import { useCombobox } from '../../../components/forms/Combobox';
 
 const professions: string[] = [
   'Software Developer',
@@ -49,6 +52,7 @@ type AboutProps = {
 export const About = (props: AboutProps) => {
   const { switchTo, touched, errors } = props;
   const { selectValue, valueExists } = useSelect('profession');
+  const { combo } = useCombobox(professions, 'addProfession');
 
   const handleNext = () => {
     if (errors.about || errors.profession) return touched();
@@ -77,7 +81,17 @@ export const About = (props: AboutProps) => {
               placeholder='Select your profession'
             >
               <SelectGroup className='p-0.5 gap-y-0.5'>
-                {professions.map((profession: string, i: number) => (
+                <Field
+                  name='addProfession'
+                  className='flex border-none shadow-none flex-row items-center pl-2'
+                >
+                  <RiSearchLine className='w-4 h-4 fill-zinc-500' />
+                  <Input
+                    name='addProfession'
+                    placeholder='Search or add new profession'
+                  />
+                </Field>
+                {combo.map((profession: string, i: number) => (
                   <SelectItem
                     key={i}
                     className={twMerge(

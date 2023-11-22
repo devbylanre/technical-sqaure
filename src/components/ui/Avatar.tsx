@@ -41,7 +41,7 @@ export const AvatarFallback = ({
   return (
     <div
       className={twMerge(
-        'flex items-center justify-center w-full h-full text-sm font-bold uppercase bg-gradient-to-br from-zinc-100 to-zinc-200 text-zinc-700',
+        'flex items-center justify-center w-full h-full text-sm font-bold uppercase bg-gradient-to-l from-zinc-200 to-zinc-100 text-zinc-700',
         className
       )}
       {...rest}
