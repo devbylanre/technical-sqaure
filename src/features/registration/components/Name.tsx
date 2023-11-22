@@ -1,11 +1,11 @@
 import { Field } from '../../../components/forms/Field';
 import Input from '../../../components/forms/Input';
 import Heading from '../../../components/ui/Heading';
-import Navigator from './Navigator';
 import { Message } from '../../../components/forms/Message';
 import { FieldGroup } from '../../../components/forms/FieldGroup';
 import Label from '../../../components/forms/Label';
 import Paragraph from '../../../components/ui/Paragraph';
+import Button from '../../../components/ui/Button';
 
 // define the name form component props type
 type NamePropsType = {
@@ -17,13 +17,9 @@ type NamePropsType = {
   touched: () => void;
 };
 const Name = ({ switchToComponent, errors, touched }: NamePropsType) => {
-  // handle the next form component
   const handleNext = () => {
     // check if first name or last name field has a value
-    if (errors.firstName || errors.lastName) {
-      touched();
-      return null;
-    }
+    if (errors.firstName || errors.lastName) return touched();
 
     switchToComponent('about'); // switch form component to community
   };
@@ -41,7 +37,7 @@ const Name = ({ switchToComponent, errors, touched }: NamePropsType) => {
       </div>
 
       {/* render first name and last name field */}
-      <div className='flex flex-col gap-y-5'>
+      <div className='flex flex-col md:flex-row gap-4'>
         {/* field name field group */}
         <FieldGroup>
           <Label name='firstName'>First Name</Label>
@@ -67,12 +63,12 @@ const Name = ({ switchToComponent, errors, touched }: NamePropsType) => {
       </div>
 
       {/* render button used to navigate between form components */}
-      <Navigator
-        next='Introduce yourself'
-        prev='Change my plan'
-        onNext={handleNext}
-        onPrev={() => switchToComponent('start')}
-      />
+      <Button
+        type='button'
+        onClick={handleNext}
+      >
+        Tell us about yourself
+      </Button>
     </>
   );
 };

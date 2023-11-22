@@ -5,7 +5,8 @@ import { Textarea } from '../../../components/forms/Textarea';
 import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
 import Heading from '../../../components/ui/Heading';
-import Navigator from './Navigator';
+import Paragraph from '../../../components/ui/Paragraph';
+import Button from '../../../components/ui/Button';
 
 type CommunityPropsType = {
   switchToComponent: (e: any) => void;
@@ -21,47 +22,51 @@ const Community = (props: CommunityPropsType) => {
 
   const handleNext = () => {
     // check if field(s) has an error message
-    if (errors.communityName || errors.communityDescription) {
-      touched(); //set field(s) to touched
-      return;
-    }
-    switchToComponent('description'); //switch the form component
+    if (errors.communityName || errors.communityDescription) return touched();
+
+    switchToComponent('interest'); //switch the form component
   };
 
   return (
     <>
-      <Heading className='text-2xl font-bold'>
-        What would you call your <br />
-        Community?
-      </Heading>
-      <FieldGroup>
-        <Label name='community'>Community</Label>
-        <Field name='community'>
-          <Input name='community' />
-        </Field>
-        <Message name='community' />
-      </FieldGroup>
+      <div>
+        <Heading className='sm:text-2xl font-bold'>
+          Setup your Community?
+        </Heading>
+        <Paragraph className='mt-1'>
+          What would you call your community?
+        </Paragraph>
+      </div>
 
-      <FieldGroup>
-        <Label name='description'>Description</Label>
-        <Field name='description'>
-          <Textarea
-            name='description'
-            limit={250}
-          />
-        </Field>
-        <Message name='description'>
-          Describe what your community does e.g A hub for learning about
-          programming algorithms
-        </Message>
-      </FieldGroup>
+      <div className='flex flex-col gap-y-4'>
+        <FieldGroup>
+          <Label name='communityName'>Community</Label>
+          <Field name='communityName'>
+            <Input name='communityName' />
+          </Field>
+          <Message name='communityName' />
+        </FieldGroup>
 
-      <Navigator
-        prev='Names'
-        next='Description'
-        onNext={handleNext}
-        onPrev={() => switchToComponent('name')}
-      />
+        <FieldGroup>
+          <Label name='communityDescription'>Description</Label>
+          <Field name='communityDescription'>
+            <Textarea
+              name='communityDescription'
+              limit={250}
+            />
+          </Field>
+          <Message name='communityDescription'>
+            Describe what your community does e.g A hub for learning about
+            programming algorithms
+          </Message>
+        </FieldGroup>
+      </div>
+      <Button
+        type='button'
+        onClick={handleNext}
+      >
+        Follow your interests
+      </Button>
     </>
   );
 };

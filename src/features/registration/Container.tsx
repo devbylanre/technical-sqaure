@@ -47,6 +47,9 @@ const validationSchema = Yup.object().shape({
     'What would you like to name your community?'
   ),
   profession: Yup.string().required('What is your profession?'),
+  about: Yup.string().required(
+    'Write a short story about you and your profession.'
+  ),
   communityDescription: Yup.string().required(
     'Describe what your community would do or its scope of operation'
   ),
@@ -91,7 +94,16 @@ export const Container = () => {
           />
         );
       case 'about':
-        return <About />;
+        return (
+          <About
+            switchTo={switchToComponent}
+            touched={() => formik.setTouched({ profession: true, about: true })}
+            errors={{
+              profession: formik.errors.profession,
+              about: formik.errors.about,
+            }}
+          />
+        );
       case 'community':
         return (
           <Community
@@ -131,7 +143,7 @@ export const Container = () => {
           />
         );
       case 'success':
-        return <Success />;
+        return <Success email={formik.values.email} />;
       default:
         return null;
     }

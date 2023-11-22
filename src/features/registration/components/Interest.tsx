@@ -9,7 +9,7 @@ import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
 import Button from '../../../components/ui/Button';
 import Heading from '../../../components/ui/Heading';
-import Navigator from './Navigator';
+import Paragraph from '../../../components/ui/Paragraph';
 
 type OptionType = {
   title: string;
@@ -67,13 +67,17 @@ const Interest = ({ error, touched, switchToComponent }: InterestPropsType) => {
 
   return (
     <>
-      <Heading className='text-2xl font-bold'>
-        Select the post feed you would like to <br />
-        follow
-      </Heading>
+      <div>
+        <Heading className='sm:text-2xl font-bold'>
+          Follow your Interests
+        </Heading>
+        <Paragraph className='mt-1'>
+          Select all the interests you would like to follow
+        </Paragraph>
+      </div>
 
       <FieldGroup>
-        <Label name='interest'>Select your interests</Label>
+        <Label name='interest'>Select your Interests</Label>
         <ButtonGroup>
           {options.map((option: OptionType, i: number) => (
             <ButtonItem key={i}>
@@ -96,12 +100,12 @@ const Interest = ({ error, touched, switchToComponent }: InterestPropsType) => {
         <Message name='interest'>Select at least five interest</Message>
       </FieldGroup>
 
-      <Navigator
-        prev='Interests'
-        next='Authentication'
-        onNext={handleNext}
-        onPrev={() => switchToComponent('interest')}
-      />
+      <Button
+        type='button'
+        onClick={handleNext}
+      >
+        Setup Authentication
+      </Button>
     </>
   );
 };

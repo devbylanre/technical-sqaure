@@ -2,8 +2,8 @@ import Heading from '../../../components/ui/Heading';
 import Paragraph from '../../../components/ui/Paragraph';
 import { RiFundsLine, RiShiningLine } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
-import { motion } from 'framer-motion';
-import Navigator from './Navigator';
+import Button from '../../../components/ui/Button';
+import { AnimatePresence } from 'framer-motion';
 
 // component props type
 type StartPropsType = {
@@ -76,14 +76,17 @@ const Start = (props: StartPropsType) => {
       </div>
 
       {/* renders a button used to navigate to name if the plan has a value with animation */}
-      {value && (
-        <motion.span animate={{ y: [8, 0], opacity: [0, 1] }}>
-          <Navigator
-            next={`Continue with ${value} plan`}
-            onNext={handleNext}
-          />
-        </motion.span>
-      )}
+      <AnimatePresence>
+        {value && (
+          <Button
+            type='button'
+            animate={{ opacity: [0, 1], y: [8, 0] }}
+            onClick={handleNext}
+          >
+            Continue with {value} plan
+          </Button>
+        )}
+      </AnimatePresence>
     </>
   );
 };

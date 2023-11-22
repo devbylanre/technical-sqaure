@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import Paragraph from '../../../components/ui/Paragraph';
 import Button from '../../../components/ui/Button';
 
-const Success = () => {
+type SuccessProps = {
+  email?: string;
+};
+
+const Success = ({ email }: SuccessProps) => {
   return (
     <>
       <div className='flex flex-col md:items-center md:text-center'>
@@ -15,14 +19,12 @@ const Success = () => {
           <RiCheckLine className='w-10 h-10 p-1.5 bg-green-100 rounded-full fill-green-700' />
         </motion.span>
 
-        <Heading className='mt-2 text-lg font-bold'>
-          Registration Successful
-        </Heading>
+        <Heading className='mt-2 font-bold'>Registration Successful</Heading>
 
         <Paragraph className='mt-1'>
           A verification link has been sent to your email address{' '}
-          <span className='font-medium'>devbylanre@gmail.com.</span> Verify your
-          account to continue.
+          <span className='font-semibold'>{email}.</span> Verify your account to
+          continue.
         </Paragraph>
       </div>
 

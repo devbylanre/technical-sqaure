@@ -1,6 +1,7 @@
 import { MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes } from 'react';
 import { cn } from '../../utils/utils';
+import { motion } from 'framer-motion';
 
 // component props type
 export type ButtonProps = {
@@ -13,7 +14,7 @@ export type ButtonProps = {
 
 const buttonVariants = {
   initialClassName:
-    'inline-flex gap-x-1 px-2 h-8 items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out rounded leading-tight',
+    'inline-flex gap-x-1 px-2 h-8 items-center justify-center font-semibold text-sm transition-all duration-300 ease-in-out rounded-lg leading-tight',
   variants: {
     default: 'bg-zinc-900 text-white hover:bg-zinc-700',
     outline:
@@ -36,7 +37,7 @@ const Button = (props: ButtonProps) => {
   const { className, variant, size, children, ...rest } = props; //props
 
   return (
-    <button
+    <motion.button
       className={cn(
         buttonVariants.initialClassName,
         buttonVariants.variants[variant || 'default'],
@@ -46,7 +47,7 @@ const Button = (props: ButtonProps) => {
       {...rest}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 

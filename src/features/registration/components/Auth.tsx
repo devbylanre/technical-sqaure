@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Heading from '../../../components/ui/Heading';
 import { RiLockLine, RiLockUnlockLine } from 'react-icons/ri';
-import Navigator from './Navigator';
 import Input from '../../../components/forms/Input';
 import { Field } from '../../../components/forms/Field';
 import { FieldGroup } from '../../../components/forms/FieldGroup';
@@ -9,6 +8,7 @@ import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
 import Checkbox from '../../../components/forms/Checkbox';
 import Paragraph from '../../../components/ui/Paragraph';
+import Button from '../../../components/ui/Button';
 
 type AuthPropsType = {
   errors: {
@@ -33,10 +33,15 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsType) => {
 
   return (
     <>
-      <Heading className='text-2xl font-bold'>
-        Finish setting up your <br />
-        Account
-      </Heading>
+      <div>
+        <Heading className='sm:text-2xl font-bold'>
+          Finish setting up your Account
+        </Heading>
+        <Paragraph className='mt-1'>
+          Finish setting up your account by providing your email and strong
+          password
+        </Paragraph>
+      </div>
 
       <div className='flex flex-col gap-y-5'>
         {/* email address field group */}
@@ -64,9 +69,15 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsType) => {
               placeholder='Usually a combination of letters and numbers'
             />
             {passwordType === 'text' ? (
-              <RiLockLine onClick={() => setPasswordType('password')} />
+              <RiLockLine
+                onClick={() => setPasswordType('password')}
+                className='cursor-pointer'
+              />
             ) : (
-              <RiLockUnlockLine onClick={() => setPasswordType('text')} />
+              <RiLockUnlockLine
+                onClick={() => setPasswordType('text')}
+                className='cursor-pointer'
+              />
             )}
           </Field>
           <Message name='password'>
@@ -87,12 +98,12 @@ const Auth = ({ errors, touched, switchToComponent }: AuthPropsType) => {
       </div>
 
       {/* button group for navigating through form component */}
-      <Navigator
-        next='Account Setup'
-        prev='Interest'
-        onNext={handleSubmit}
-        onPrev={() => switchToComponent('interest')}
-      />
+      <Button
+        type='submit'
+        onClick={handleSubmit}
+      >
+        Sign up{' '}
+      </Button>
     </>
   );
 };

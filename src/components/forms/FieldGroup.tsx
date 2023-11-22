@@ -8,7 +8,7 @@ type FieldGroupProps = {
 
 export const FieldGroup = ({ children, className }: FieldGroupProps) => {
   return (
-    <div className={twMerge('flex flex-col gap-y-1.5', className)}>
+    <div className={twMerge('w-full flex flex-col gap-y-1.5', className)}>
       {children}
     </div>
   );

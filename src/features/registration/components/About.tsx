@@ -1,6 +1,5 @@
 import Heading from '../../../components/ui/Heading';
 import { FieldGroup } from '../../../components/forms/FieldGroup';
-import Input from '../../../components/forms/Input';
 import { Field } from '../../../components/forms/Field';
 import Label from '../../../components/forms/Label';
 import { Message } from '../../../components/forms/Message';
@@ -11,6 +10,9 @@ import {
   useSelect,
 } from '../../../components/forms/Select';
 import { twMerge } from 'tailwind-merge';
+import { Textarea } from '../../../components/forms/Textarea';
+import Paragraph from '../../../components/ui/Paragraph';
+import Button from '../../../components/ui/Button';
 
 const professions: string[] = [
   'Software Developer',
@@ -35,15 +37,38 @@ const professions: string[] = [
   'AI Engineer',
 ];
 
-export const About = () => {
+type AboutProps = {
+  switchTo: (e: string) => void;
+  touched: (e?: any) => void;
+  errors: {
+    profession?: string;
+    about?: string;
+  };
+};
+
+export const About = (props: AboutProps) => {
+  const { switchTo, touched, errors } = props;
   const { selectValue, valueExists } = useSelect('profession');
+
+  const handleNext = () => {
+    if (errors.about || errors.profession) return touched();
+
+    switchTo('community');
+  };
 
   return (
     <>
-      <Heading className='sm:text-2xl font-bold'>
-        Tell us more about yourself
-      </Heading>
+      <div>
+        <Heading className='sm:text-2xl font-bold'>
+          Tell us more about yourself
+        </Heading>
+        <Paragraph className='mt-1'>
+          Tell your community what you do and introduce yourself with the about
+          me field
+        </Paragraph>
+      </div>
       <div className='flex flex-col gap-y-4'>
+        {/* profession field */}
         <FieldGroup>
           <Label name='profession'>What is your profession</Label>
           <Field name='profession'>
@@ -56,7 +81,7 @@ export const About = () => {
                   <SelectItem
                     key={i}
                     className={twMerge(
-                      'p-2 hover:bg-zinc-100 first-letter:uppercase text-sm font-normal rounded-lg',
+                      'px-2 py-1.5 text-zinc-900 hover:bg-zinc-100 first-letter:uppercase text-sm font-normal rounded-md',
                       valueExists(profession) && 'bg-zinc-100 font-bold'
                     )}
                     onSelect={() => selectValue(profession)}
@@ -67,8 +92,28 @@ export const About = () => {
               </SelectGroup>
             </Select>
           </Field>
+          <Message name='profession' />
+        </FieldGroup>
+
+        {/* about me field */}
+        <FieldGroup>
+          <Label name='about'>Tell us about yourself</Label>
+          <Field name='about'>
+            <Textarea
+              name='about'
+              limit={250}
+            />
+          </Field>
+          <Message name='about' />
         </FieldGroup>
       </div>
+
+      <Button
+        type='button'
+        onClick={handleNext}
+      >
+        Setup my community
+      </Button>
     </>
   );
 };
