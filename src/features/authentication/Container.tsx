@@ -20,9 +20,9 @@ const validationSchema = Yup.object().shape({
 
 const AuthContainer = () => {
   return (
-    <div className='grid bg-zinc-100 md:grid-cols-12'>
+    <div className='inline-flex w-full'>
       <Sidebar />
-      <div className='col-span-6 px-3 py-5 bg-white lg:col-span-4 md:px-8 lg:px-12 md:py-0'>
+      <div className='w-full sm:w-3/6 lg:w-2/6 bg-white px-3 md:px-8 lg:px-12'>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

@@ -3,46 +3,44 @@ import Button from '../../../components/ui/Button';
 import {
   RiGoogleFill,
   RiFacebookCircleFill,
-  RiTwitterFill,
   RiAppleFill,
+  RiTwitterXFill,
 } from 'react-icons/ri';
 
 const iconClassName = 'w-4 h-4';
 
+const buttons: { provider: string; icon: React.ReactNode }[] = [
+  {
+    provider: 'Google',
+    icon: <RiGoogleFill className={iconClassName} />,
+  },
+  {
+    provider: 'Apple',
+    icon: <RiAppleFill className={iconClassName} />,
+  },
+  {
+    provider: 'Facebook',
+    icon: <RiFacebookCircleFill className={iconClassName} />,
+  },
+  {
+    provider: 'Twitter',
+    icon: <RiTwitterXFill className={iconClassName} />,
+  },
+];
+
 export const SocialButtons = () => {
   return (
-    <div className='flex flex-row flex-wrap w-full gap-2'>
-      <Button
-        size='sm'
-        variant='outline'
-      >
-        <RiGoogleFill className={iconClassName} />
-        <span>Google</span>
-      </Button>
-
-      <Button
-        size='sm'
-        variant='outline'
-      >
-        <RiAppleFill className={iconClassName} />
-        <span>Apple</span>
-      </Button>
-
-      <Button
-        size='sm'
-        variant='outline'
-      >
-        <RiFacebookCircleFill className={iconClassName} />
-        <span>Facebook</span>
-      </Button>
-
-      <Button
-        size='sm'
-        variant='outline'
-      >
-        <RiTwitterFill className={iconClassName} />
-        <span>Twitter</span>
-      </Button>
+    <div className='flex md:flex-row gap-2 flex-wrap '>
+      {buttons.map((button, i: number) => (
+        <Button
+          key={i}
+          type='button'
+          variant='soft'
+        >
+          <span>{button.icon}</span>
+          {button.provider}
+        </Button>
+      ))}
     </div>
   );
 };

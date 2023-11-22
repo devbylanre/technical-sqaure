@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, HTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type AvatarProps = {
@@ -30,11 +30,22 @@ export const Avatar = ({ src, children, alt, className }: AvatarProps) => {
 
 type AvatarFallbackProps = {
   children: React.ReactNode;
-};
+  className?: string;
+} & HTMLAttributes<HTMLDivElement>;
 
-export const AvatarFallback = ({ children }: AvatarFallbackProps) => {
+export const AvatarFallback = ({
+  children,
+  className,
+  ...rest
+}: AvatarFallbackProps) => {
   return (
-    <div className='flex items-center justify-center w-full h-full text-sm font-bold uppercase bg-gradient-to-br from-zinc-100 to-zinc-200 text-zinc-500'>
+    <div
+      className={twMerge(
+        'flex items-center justify-center w-full h-full text-sm font-bold uppercase bg-gradient-to-br from-zinc-100 to-zinc-200 text-zinc-700',
+        className
+      )}
+      {...rest}
+    >
       {children}
     </div>
   );
